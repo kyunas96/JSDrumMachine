@@ -1,0 +1,23 @@
+{
+  "name": "drum-machine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "file-loader": "^6.2.0",
+    "howler": "^2.2.1",
+    "webpack": "^5.40.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "webpack-cli": "^4.7.2"
+  }
+}

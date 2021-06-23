@@ -1,0 +1,21 @@
+-each track will NOT have its own sequencer
+-there will be one sequencer
+-drumMachine class will keep track of the currently selected drum cell
+-when record mode is initiated, 
+  •the drum-cell-indicator will illuminate for the active cells for the
+   sound
+  •when drum cells are clicked in record mode, they will patch the current 
+   sound into the sequencer
+  
+  -have the ui file be a controller that links user interactions to 
+   functions in the drumMachine
+
+
+
+
+
+   Webpack Initial Setup done
+
+   -test imports and exports of own files
+   -test importing of howler
+
