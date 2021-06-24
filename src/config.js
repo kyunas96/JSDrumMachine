@@ -11,3 +11,22 @@ const drumNames = [
   'oh', // open hat
   'ch' // closed hat
 ]
+
+const keysForDrums = [
+  'a',
+  's',
+  'd',
+  'f',
+  'g',
+  'h',
+  'j',
+  'k',
+  'l',
+  ';',
+  "\'"
+]
+
+module.exports = {
+  drumNames,
+  keysForDrums
+}

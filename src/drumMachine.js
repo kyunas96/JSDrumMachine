@@ -1,26 +1,67 @@
 import { calcIntervalStride } from "./util";
 import StepContainer from './stepContainer';
+import { drumNames } from './config';
 
 export default class DrumMachine{
   constructor(sounds){
     this.drums = sounds;
-    this.currentSound = this.setCurrentSound('bd');
-    this.tempo = 120;
+    this.setCurrentSound('bd');
+    this.setTempo(120);
     this.intervalStride = calcIntervalStride(this.tempo);
     this.playing = false;
     this.editing = false;
-    this.sequencer = new Array(16).fill(StepContainer(['kick']))
+    this.sequencer = new Array(16).fill().map(u => StepContainer(drumNames))
+    console.log(this);
   }
 
   setCurrentSound(name){
     if(!this.recording){
       this.currentSound = name;
     }
-    console.log(this.currentSound)
     let sampleDisplay = document.getElementsByClassName('current-sample-display')[0];
-    console.log(sampleDisplay);
     sampleDisplay.innerHTML = this.currentSound;
+  }
 
+  setTempo(tempo){
+    this.tempo = tempo;
+    let tempoDisplay = document.getElementsByClassName('tempo-display')[0];
+    tempoDisplay.innerHTML = this.tempo;
+  }
+
+  toggleStep(stepNumber){
+    let curStep = this.sequencer[stepNumber];
+    Object.assign(curStep, { [this.currentSound]: !curStep[this.currentSound]})
+    this.toggleIndicators()
+  }
+
+  toggleIndicators(){
+    let activeCells = this.grabActiveCells();
+    let drumNodes = document.getElementsByClassName('drum-cell-button');
+    let drumCellButtons = Array.from(drumNodes);
+    for(let i = 0; i < drumCellButtons.length; i++){
+      let curCell = drumCellButtons[i].children[0];
+      if(activeCells.includes(i)){
+        curCell.classList.add('armed');
+      }else{
+        curCell.classList.remove('armed');
+      }
+    }
+
+
+    // activeCells.forEach(activeIndex => {
+    //   console.log(drumCellButtons[activeIndex].children[0].classList.toggle('armed'))
+    // })
+  }
+
+  grabActiveCells(){
+    // sequencer is an array, no need for `for...in` loop
+    let activeCellIndices = [];
+    this.sequencer.forEach((step, i) => {
+      if(step[this.currentSound] === true){
+        activeCellIndices.push(i)
+      }
+    })
+    return activeCellIndices;
   }
 
 

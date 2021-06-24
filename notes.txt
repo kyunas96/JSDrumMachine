@@ -11,11 +11,10 @@
    functions in the drumMachine
 
 
+-write logic for the edit mode in ui.js in `mapSoundToCell`
 
 
-
-   Webpack Initial Setup done
-
-   -test imports and exports of own files
-   -test importing of howler
-
+-go through all the steps and check to see which have true values for the 
+ currentSound, store the indices in an array
+  •go over the array of indices and toggle an `armed` class for the ones that 
+   are true
