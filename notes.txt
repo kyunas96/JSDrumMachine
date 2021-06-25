@@ -18,3 +18,15 @@
  currentSound, store the indices in an array
   •go over the array of indices and toggle an `armed` class for the ones that 
    are true
+
+-drumMachine functions that are called from the controller that require UI changes,
+ can return promises that then deal with UI changes in the Controller, with functions
+ represented in the View
+
+ -make the info-display a form that will change the state of the drum machine
+  via text for the tempo and a list for the drumMachine cells
+
+-vanilla JS can be leveraaged to create the whole UI as React does, alternatively,
+ a hybrid approach can be used that sets up the general structure of the app 
+ (such as the list of drums for the currentSample select element, or the cells
+ of the sequencer)
