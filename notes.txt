@@ -35,4 +35,14 @@
   corresponding to the drumMachine and then have classes be applied to them
   that represent the different drumMachines
 
--when swapping between drumMachines, swap out the 
+-all createView methods will laydown the base html necessary for their view
+  • all views will have the same base components
+
+-What components will all drumMachines have in common
+  • sequencer
+  • title
+  • subtitle
+  • step cell (808, 909 are the same)
+
+-Would it be possible to store the html for each drumMachine as 
+  a javascript string

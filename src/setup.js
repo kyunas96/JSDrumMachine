@@ -1,16 +1,16 @@
-function patchKeyToSound(sounds, keys) {
+function patchKeysToSounds(sounds, keys) {
   return function (input) {
     const indexOf = keys.indexOf(input);
     if (indexOf !== -1) {
-      const key = Object.keys(sounds)[indexOf];
-      sounds[key].play();
+      sounds[indexOf].play();
     }
   };
 }
 
 function setUpKeys(sounds, keys){
+  const callback = patchKeysToSounds(sounds, keys)
   document.addEventListener('keypress', function(e){
-    patchKeyToSound(sounds, keys)(e.key)
+    callback(e.key)
   })
 }
 

@@ -3,13 +3,18 @@ import initializeSounds from './src/initializeSounds';
 // import setUpUI from './src/ui';
 import kits from './src/kits/kits';
 import { setUpKeys } from './src/setup';
+import JS808view from '../JS808view';
 
 document.addEventListener("DOMContentLoaded" , () => {
-  let sounds = initializeSounds(kits.JS707.samples);
-  console.log(sounds);
-  document.addEventListener('keydown', function(){
-    
-  })
+  const body = document.getElementsByTagName("BODY")[0];
+  console.log(body);
+  body.innerHTML = JS808view;
+  // const sounds = initializeSounds(kits.JS707.samples);
+  // const names = kits.JS707.names;
+  // const keys = kits.JS707.keys;
+
+  // console.log(sounds);
+  // setUpKeys(sounds, kits.JS707.keys);
 })
 
 
