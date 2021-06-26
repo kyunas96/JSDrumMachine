@@ -2,17 +2,15 @@ import loadSamples from './src/loadSamples';
 // import DrumMachine from './src/drumMachine';
 // import setUpUI from './src/ui';
 import { JS707, JS808, JS909 } from './src/config';
-import { patchKeyToSound } from './src/setup';
+import { setUpKeys } from './src/setup';
 
 document.addEventListener("DOMContentLoaded" , () => {
-  let sounds = loadSamples(JS707.samples);  
+  // let sounds = loadSamples(JS707.samples);  
   // Object.keys(sounds).forEach((sound, i ) => {
   //   console.log(i, sound)
   // })
 
-  document.addEventListener("keypress", function (e) {
-    patchKeyToSound(sounds, JS707.keys)(e.key)
-  });
+  setUpKeys(loadSamples(JS707.samples), JS707.keys)
 })
 
 

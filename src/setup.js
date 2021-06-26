@@ -8,6 +8,12 @@ function patchKeyToSound(sounds, keys) {
   };
 }
 
+function setUpKeys(sounds, keys){
+  document.addEventListener('keypress', function(e){
+    patchKeyToSound(sounds, keys)(e.key)
+  })
+}
+
 module.exports = {
-  patchKeyToSound,
+  setUpKeys
 };
