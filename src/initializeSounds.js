@@ -1,14 +1,11 @@
 import { Howl } from "howler";
 
-export default function loadSamples(samples){
-  let ret = {};
-
-  for(const drum in samples){
-    ret[drum] = new Howl({
-      src: [samples[drum]]
+export default function initalizeSounds(files){
+  return files.map(sound => (
+    new Howl({
+      src: [sound]
     })
-  }
-  return ret;
+  ))
 }
 
 function setup() {

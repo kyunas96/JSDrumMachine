@@ -1,16 +1,15 @@
-import loadSamples from './src/loadSamples';
+import initializeSounds from './src/initializeSounds';
 // import DrumMachine from './src/drumMachine';
 // import setUpUI from './src/ui';
-import { JS707, JS808, JS909 } from './src/config';
+import kits from './src/kits/kits';
 import { setUpKeys } from './src/setup';
 
 document.addEventListener("DOMContentLoaded" , () => {
-  // let sounds = loadSamples(JS707.samples);  
-  // Object.keys(sounds).forEach((sound, i ) => {
-  //   console.log(i, sound)
-  // })
-
-  setUpKeys(loadSamples(JS707.samples), JS707.keys)
+  let sounds = initializeSounds(kits.JS707.samples);
+  console.log(sounds);
+  document.addEventListener('keydown', function(){
+    
+  })
 })
 
 
