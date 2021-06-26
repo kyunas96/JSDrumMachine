@@ -6,7 +6,8 @@ export default function setupUI(drumMachine) {
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
   mapPlayToSpacebar(drumMachine);
-  console.log("allNumbers: " + allNumbers("12a34"))
+  mapTempoUpdate(drumMachine);
+  populateCurrentSample(drumMachine);
 }
 
 function bindTransportControls(drumMachine) {
@@ -80,7 +81,7 @@ function mapSoundToCell(drumMachine, drum) {
 }
 
 function mapToggleToCell(drumMachine, drumNum) {
-  let currentStep = drumMachine.sequencer[drumNum];
+  const currentStep = drumMachine.sequencer[drumNum];
   currentStep[drumMachine.currentSound] =
     !currentStep[drumMachine.currentSound];
     
@@ -102,4 +103,31 @@ function mapPlayToSpacebar(drumMachine){
       drumMachine.togglePlay()
     }
   })
+}
+
+function populateCurrentSample(drumMachine){
+  const currentSampleDisplay = document.getElementsByClassName("current-sample-display")[0];
+  for(const drum in drumMachine.drums){
+    const option = document.createElement("option");
+    option.value = drum;
+    option.innerHTML = drum;
+    currentSampleDisplay.appendChild(option);
+  }
+}
+
+function mapTempoUpdate(drumMachine){
+  const tempoDisplay = document.getElementsByClassName("tempo-display")[0];
+  const drumMachineNode = document.getElementsByClassName("drum-machine")[0];
+  console.log(drumMachineNode);
+  const handler = function(e){
+    e.preventDefault();
+    // e.stopPropagation();
+    if(allNumbers(e.target.value)){
+      console.log("all numbers");
+      drumMachine.setTempo(parseInt(e.target.value, 10))
+    }
+    document.activeElement.blur()
+  };
+  tempoDisplay.onchange = handler;
+  tempoDisplay.onsubmit = handler;
 }

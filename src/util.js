@@ -7,6 +7,10 @@ function allNumbers(str){
   return regEx.test(str);
 }
 
+function getValueFromEvent(event){
+  
+}
+
 module.exports = {
   calcIntervalStride,
   allNumbers

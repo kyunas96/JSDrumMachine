@@ -1,6 +1,17 @@
 import { Howl } from "howler";
 
-export default function setup() {
+export default function loadSamples(samples){
+  let ret = {};
+
+  for(const drum in samples){
+    ret[drum] = new Howl({
+      src: [samples[drum]]
+    })
+  }
+  return ret;
+}
+
+function setup() {
 
   let bd = new Howl({
     src: ["./samples/808-bd.wav"],

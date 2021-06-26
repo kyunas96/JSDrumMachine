@@ -1,6 +1,11 @@
 @font-face {
   font-family: 'Serif-Gothic';
-  src: local('Serif-Gothic'), url("./serifgothicbq-extrabold.otf") format("opentype");
+  src: url("./serifgothicbq-extrabold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'DIGI';
+  src: url("./DS-DIGII.TTF");
 }
 
 * {
@@ -23,7 +28,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.title-container{
+.title-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -56,14 +61,18 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  width: 100%;
 }
 
-.drum-machine-upper-right{
+.drum-machine-upper-left {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drum-machine-upper-right {
   width: 35%;
-}
-
-.drum-machine-upper-left{
-
 }
 
 .drum-machine-lower {
@@ -74,13 +83,40 @@ body {
   /* justify-content: space-between; */
 }
 
-.tempo-display {}
+.info-display {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tempo-display {
+  font-family: 'DIGI';
+  font-size: 50px;
+  text-align: center;
+  padding: 5px;
+  border: 2px solid black;
+  background-color: #E4570F;
+  width: 35%;
+}
+
+.current-sample-display {
+  width: 15%;
+  text-align-last: center;
+  /* text-indent: 1px; */
+  /* text-overflow: ''; */
+  /* white-space: normal; */
+  appearance: none;
+  border: none;
+}
 
 .start-stop-button {
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
-  height: 60%;
+  justify-content: space-evenly;
+  height: 50%;
   width: 60%;
   cursor: pointer;
   background: rgb(255, 171, 113);
@@ -89,11 +125,18 @@ body {
   border-radius: 2px;
 }
 
+.start-button {
+  width: 80%;
+  text-align: center;
+  padding: 3px;
+  border-bottom: 2px solid black;
+}
+
 .edit-button-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 75%;
+  height: 50%;
   /* align-self: flex-end; */
 }
 
@@ -132,7 +175,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .red {

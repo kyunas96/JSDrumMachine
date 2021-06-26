@@ -30,3 +30,9 @@
  a hybrid approach can be used that sets up the general structure of the app 
  (such as the list of drums for the currentSample select element, or the cells
  of the sequencer)
+
+ -create base html layout that will then be populated with the proper elements
+  corresponding to the drumMachine and then have classes be applied to them
+  that represent the different drumMachines
+
+-when swapping between drumMachines, swap out the 

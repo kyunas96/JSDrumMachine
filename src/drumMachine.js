@@ -25,11 +25,12 @@ export default class DrumMachine {
   }
 
   setTempo(tempo) {
-    if(allNumbers(tempo)){
+    if(tempo >= 50 && tempo <= 200){
       this.tempo = tempo;
     }
     let tempoDisplay = document.getElementsByClassName("tempo-display")[0];
-    tempoDisplay.innerHTML = this.tempo;
+    tempoDisplay.value = this.tempo;
+    console.log("tempo: " + this.tempo)
   }
 
   toggleStep(stepNumber) {
