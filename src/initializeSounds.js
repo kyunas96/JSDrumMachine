@@ -1,5 +1,3 @@
-import { Howl } from "howler";
-
 export default function initalizeSounds(files){
   return files.map(sound => (
     new Howl({
