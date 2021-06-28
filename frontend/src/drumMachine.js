@@ -1,4 +1,4 @@
-import { calcIntervalStride, allNumbers } from "./util";
+import { calcIntervalStride, checkTempoInput } from "./util";
 import StepContainer from "./stepContainer";
 import { drumNames } from "./config";
 
@@ -21,11 +21,11 @@ export default class DrumMachine {
   }
 
   setTempo(tempo) {
-    if(allNumbers(tempo)){
-      this.tempo = tempo;
+    if(checkTempoInput(tempo)){
+      this.tempo = parseInt(tempo);
+    }else{
+      this.tempo = this.tempo;
     }
-    let tempoDisplay = document.getElementById("tempo-display");
-    tempoDisplay.innerHTML = this.tempo;
   }
 
   toggleStep(stepNumber) {

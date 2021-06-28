@@ -1,12 +1,12 @@
 // UI functions must hook into the state of the drum machine
 import { keysForDrums } from "./config";
-import { allNumbers } from "./util";
 
 export default function setupUI(drumMachine) {
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
   mapPlayToSpacebar(drumMachine);
   mapSamplesToSampleDisplay(drumMachine);
+  mapTempoToTempoDisplay(drumMachine);
 }
 
 function bindTransportControls(drumMachine) {
@@ -102,12 +102,23 @@ function mapSamplesToSampleDisplay(drumMachine){
     const currentDrum = this.options[this.selectedIndex].value;
     drumMachine.setCurrentSound(currentDrum);
   }
-  // console.log(drumMachine.drums);
+
   for(const drum in drumMachine.drums){
     const option = document.createElement('option');
     option.value = drum;
     option.text = drum;
     sampleDisplay.appendChild(option)
+  }
+}
+
+function mapTempoToTempoDisplay(drumMachine){
+  const tempoDisplay = document.getElementById("tempo-display");
+  tempoDisplay.value = drumMachine.tempo;
+
+  tempoDisplay.onchange = function(e){
+    drumMachine.setTempo(e.target.value)
+    this.value = drumMachine.tempo;
+    tempoDisplay.blur();
   }
 }
 

@@ -2,12 +2,17 @@ function calcIntervalStride(tempo){
   return tempo / 600;
 }
 
-function allNumbers(str){
+function checkTempoInput(str){
   const regEx = /^\d+$/;
-  return regEx.test(str);
+  if(!regEx.test(str)){
+    return false;
+  }else{
+    const numericalValue = parseInt(str);
+    return (numericalValue >= 50 && numericalValue <= 200);
+  }
 }
 
 module.exports = {
   calcIntervalStride,
-  allNumbers
+  checkTempoInput
 }
