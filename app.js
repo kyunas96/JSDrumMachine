@@ -8,7 +8,6 @@ app.use('/public', express.static(path.resolve(__dirname, "public")))
 
 app.get('/', (req, res) => {
   const toFile = path.resolve(__dirname, 'public', 'test.html')
-  console.log(toFile)
   res.sendFile(path.resolve(__dirname, 'public', 'test.html'));
   // res.send("hello world");
 })

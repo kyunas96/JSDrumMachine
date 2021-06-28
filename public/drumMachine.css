@@ -3,15 +3,35 @@
   src: local('Serif-Gothic'), url("./serifgothicbq-extrabold.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Digi";
+  src: url("DS-DIGIB.TTF");
+}
+
 * {
   font-family: sans-serif;
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#drum-machine-header {
+  font-family: 'Serif-Gothic';
+  font-size: 80px;
+  color: #E4570F;
+  padding: 25px 0;
 }
 
 .drum-machine {
@@ -23,7 +43,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.title-container{
+.title-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,7 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
+  width: 92%;
   padding: 0 30px;
 }
 
@@ -58,12 +78,16 @@ body {
   height: 100px;
 }
 
-.drum-machine-upper-right{
+.drum-machine-upper-right {
   width: 35%;
 }
 
-.drum-machine-upper-left{
-
+.drum-machine-upper-left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .drum-machine-lower {
@@ -74,7 +98,33 @@ body {
   /* justify-content: space-between; */
 }
 
-.tempo-display {}
+.info-display {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+
+#tempo-display {
+  text-align: center;
+  font-family: 'Digi';
+  color: #E4570F;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  width: 25%;
+  cursor: pointer;
+}
+
+#sample-display {
+  appearance: none;
+  text-align: center;
+  font-family: 'Digi';
+  color: #E4570F;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  cursor: pointer;
+}
 
 .start-stop-button {
   display: flex;
@@ -181,4 +231,17 @@ body {
 .shadow {
   height: 45px;
   width: 100%;
+}
+
+footer{
+  padding-top: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.link img{
+  width: 40px;
+  height: 40px;
 }
