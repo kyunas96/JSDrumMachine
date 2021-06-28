@@ -1,9 +1,11 @@
 // UI functions must hook into the state of the drum machine
 import { keysForDrums } from "./config";
+import { allNumbers } from "./util";
 
 export default function setupUI(drumMachine) {
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
+  mapPlayToSpacebar(drumMachine);
 }
 
 function bindTransportControls(drumMachine) {
@@ -19,19 +21,41 @@ function bindSoundsToCells(drumMachine) {
   );
   drumCellButtons.forEach((drum, i) => {
     if (drum.id !== "") {
-      drum.onclick = mapSoundToCell(drumMachine, drum);
+      drum.onclick = drumPlayAndToggle(drumMachine, drum);
       mapSoundToKey(drumMachine, drum.id, keysForDrums[i]);
-      // drum.onclick = function () {
-      //   if (!drumMachine.editing) {
-      //     drumMachine.setCurrentSound(drum.id);
-      //     drumMachine.playSound(drumMachine.drums[drum.id]);
-      //   }else{
-      //     drumMachine
-      //   }
-
-      // };
+    }else{
+      drum.onclick = drumToggle(drumMachine, drum);
     }
   });
+}
+
+function drumPlayAndToggle(drumMachine, drum) {
+  const drumId = drum.id;
+  const drumNum = drum.getAttribute("num");
+  return function () {
+    if (!drumMachine.editing) {
+      drumMachine.setCurrentSound(drumId);
+      drumMachine.playSound(drumMachine.drums[drumId]);
+    } else {
+      // in the case that the drumMachine is in edit mode, when drum cells are
+      // clicked they should toggle the `currentSound` in the stepContainer
+      // corresponding to the cell that was clicked on
+      // ex. If i click on the 5th step cell while in edit mode, the `currentSound`
+      // should be toggled for the 5th stepContainer in the sequencer
+      // drumMachine
+      // console.log("bang");
+      drumMachine.toggleStep(drumNum);
+    }
+  };
+}
+
+function drumToggle(drumMachine, drum) {
+  const drumNum = drum.getAttribute("num");
+  return function(){
+    if(drumMachine.editing){
+      drumMachine.toggleStep(drumNum);
+    }
+  }
 }
 
 function mapSoundToCell(drumMachine, drum) {
@@ -66,6 +90,15 @@ function mapSoundToKey(drumMachine, drumName, key) {
   addEventListener("keydown", function (e) {
     if (e.key === key) {
       drumMachine.playSound(drumMachine.drums[drumName]);
+      drumMachine.setCurrentSound(drumName);
     }
   });
+}
+
+function mapPlayToSpacebar(drumMachine){
+  addEventListener("keydown", function(e) {
+    if(e.key === " "){
+      drumMachine.togglePlay()
+    }
+  })
 }

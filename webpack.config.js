@@ -2,9 +2,10 @@ const path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./test.js",
+  entry: "./frontend/src/entry.js",
   output: {
     filename: "bundle.js",
+    path: path.resolve(__dirname, "public")
   },
   module: {
     rules: [

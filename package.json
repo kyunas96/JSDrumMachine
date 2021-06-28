@@ -5,13 +5,17 @@
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --watch --mode=development",
+    "server": "nodemon app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "howler": "^2.2.1",
+    "nodemon": "^2.0.7",
     "webpack": "^5.40.0"
   },
   "devDependencies": {
