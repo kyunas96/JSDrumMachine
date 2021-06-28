@@ -118,6 +118,8 @@ body {
 
 #sample-display {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   text-align: center;
   font-family: 'Digi';
   color: #E4570F;
