@@ -6,7 +6,6 @@ export default function setupUI(drumMachine) {
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
   mapPlayToSpacebar(drumMachine);
-  console.log("allNumbers: " + allNumbers("12a34"))
 }
 
 function bindTransportControls(drumMachine) {

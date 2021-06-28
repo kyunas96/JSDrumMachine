@@ -1,6 +1,6 @@
-import loadSamples from './src/loadSamples';
-import DrumMachine from './src/drumMachine';
-import setUpUI from './src/ui';
+import loadSamples from './loadSamples';
+import DrumMachine from './drumMachine';
+import setUpUI from './ui';
 
 let step1 = { kick: true };
 let step2 = { ch: true };
