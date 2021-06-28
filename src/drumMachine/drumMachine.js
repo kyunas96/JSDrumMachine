@@ -1,4 +1,4 @@
-import { calcIntervalStride } from "./util";
+import { calcIntervalStride } from "../util";
 import StepContainer from './stepContainer';
 import { drumNames } from './config';
 
