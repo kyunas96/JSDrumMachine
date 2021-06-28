@@ -6,6 +6,7 @@ export default function setupUI(drumMachine) {
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
   mapPlayToSpacebar(drumMachine);
+  mapSamplesToSampleDisplay(drumMachine);
 }
 
 function bindTransportControls(drumMachine) {
@@ -93,6 +94,21 @@ function mapSoundToKey(drumMachine, drumName, key) {
       drumMachine.setCurrentSound(drumName);
     }
   });
+}
+
+function mapSamplesToSampleDisplay(drumMachine){
+  const sampleDisplay = document.getElementById("sample-display");
+  sampleDisplay.onchange = function(e){
+    const currentDrum = this.options[this.selectedIndex].value;
+    drumMachine.setCurrentSound(currentDrum);
+  }
+  // console.log(drumMachine.drums);
+  for(const drum in drumMachine.drums){
+    const option = document.createElement('option');
+    option.value = drum;
+    option.text = drum;
+    sampleDisplay.appendChild(option)
+  }
 }
 
 function mapPlayToSpacebar(drumMachine){

@@ -18,17 +18,13 @@ export default class DrumMachine {
     if (!this.recording) {
       this.currentSound = name;
     }
-    let sampleDisplay = document.getElementsByClassName(
-      "current-sample-display"
-    )[0];
-    sampleDisplay.innerHTML = this.currentSound;
   }
 
   setTempo(tempo) {
     if(allNumbers(tempo)){
       this.tempo = tempo;
     }
-    let tempoDisplay = document.getElementsByClassName("tempo-display")[0];
+    let tempoDisplay = document.getElementById("tempo-display");
     tempoDisplay.innerHTML = this.tempo;
   }
 
