@@ -1,4 +1,5 @@
 [JS Drum Machine](http://javascript-drum-machine.herokuapp.com/)
+=================
 
 ![Algorithm schema](./images/JSDrumMachine.png)
 
