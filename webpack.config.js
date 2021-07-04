@@ -5,7 +5,7 @@ module.exports = {
   entry: "./frontend/src/entry.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "public")
+    path: path.resolve(__dirname, "public"),
   },
   module: {
     rules: [
@@ -20,11 +20,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(mp3|wav)$/,
-        loader: "file-loader",
-        options: {
-          name: "samples/[name].[ext]",
-        },
+        test: /\.(scss|css)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
