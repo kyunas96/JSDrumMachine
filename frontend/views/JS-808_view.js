@@ -1,7 +1,43 @@
-import './JS-808.scss';
+import "./JS-808.scss";
+
+const drumMachineBase = `
+<div class="drum-machine">
+  <div class="upper">
+    
+  </div>
+
+
+  <div class="lower">
+
+  </div>
+  
+</div>`;
+
+const JS808_upper = `
+  <div class="upper">
+
+  </div>
+`;
+
+const JS808_lower = `
+  <div class="lower">
+
+  </div>
+`;
+
+const JS808_sequencer = `
+
+`;
+
+const JS808_title = `
+
+`;
+
+const JS808_transport_controls = `
+
+`;
 
 export const JS808_view = `<div id="container">
-      <span id="drum-machine-header">JS Drum Machine</span>
       <div class="drum-machine">
         <div class="drum-machine-shoulder"></div>
         <div class="drum-machine-housing">
