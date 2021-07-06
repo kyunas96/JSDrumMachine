@@ -12,34 +12,12 @@
   font-family: sans-serif;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 #drum-machine-header {
   font-family: 'Serif-Gothic';
-  font-size: 80px;
   color: #E4570F;
-  padding: 25px 0;
 }
 
 .drum-machine {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 1000px;
-  height: 400px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -224,24 +202,7 @@ body {
   border-radius: 50%;
 }
 
-.armed {
-  background-color: red;
-}
-
 .shadow {
   height: 45px;
   width: 100%;
-}
-
-footer{
-  padding-top: 50px;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.link img{
-  width: 40px;
-  height: 40px;
 }
