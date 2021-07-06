@@ -1,0 +1,264 @@
+/* main color:  228, 228, 228*/
+
+/* accent: 221, 134, 59 */
+
+/* gray: rgb(90, 92, 100) */
+
+@font-face {
+  font-family: 'TR-909';
+  src: url("./TR-909.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Digi";
+  src: url("DS-DIGIB.TTF");
+}
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#drum-machine-header {
+  font-family: 'Serif-Gothic';
+  font-size: 80px;
+  color: #E4570F;
+  padding-bottom: 25px;
+}
+
+.drum-machine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
+  height: 400px;
+  background-color: rgba(228, 228, 228);
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 25px;
+}
+
+.title {
+  padding-left: 20px;
+}
+
+.title, .subtitle {
+  font-family: 'TR-909';
+  color: rgb(221, 134, 59);
+}
+
+.drum-machine-housing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 92%;
+  padding: 0 30px;
+}
+
+.drum-machine-shoulder {
+  width: 4%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.drum-machine-upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100px;
+}
+
+.main-controls {
+  width: 100%;
+}
+
+.drum-machine-upper-left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-machine-lower {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 25%;
+  /* justify-content: space-between; */
+}
+
+.info-display {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+
+#tempo-display {
+  text-align: center;
+  font-family: 'Digi';
+  color: rgb(221, 134, 59);
+  background-color: rgb(90, 92, 100);
+  font-size: 40px;
+  width: 25%;
+  cursor: pointer;
+}
+
+#sample-display {
+  appearance: none;
+  text-align: center;
+  font-family: 'Digi';
+  color: rgb(221, 134, 59);
+  background-color: rgb(90, 92, 100);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.transport-controls {
+  height: 100%;
+  width: 15%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-stop-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60%;
+  width: 60%;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.start-button, .stop-button, .edit-button {
+  background-color: rgb(90, 92, 100);
+}
+
+.stop-button {
+  background-color: rgb(90, 92, 100);
+}
+
+.edit-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75%;
+  /* align-self: flex-end; */
+}
+
+.edit-button {
+  height: 40%;
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 2px;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.sequencer-tempo-knob {
+  width: 100%;
+}
+
+.tempo-knob-container{
+
+}
+
+.sequencer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* padding: 0 50px; */
+}
+
+.drum-cell {
+  font-size: 17px;
+  position: relative;
+  width: 30px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.drum-cell-button {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.drum-cell-button:hover {
+  filter: brightness(85%);
+}
+
+.drum-cell-header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+}
+
+.indicator {
+  /* position: relative; */
+  /* top: 5px; */
+  /* left: -10px; */
+  height: 8px;
+  width: 12px;
+  /* margin: 0 0 7px 0; */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* border-radius: 50%; */
+}
+
+.armed {
+  background-color: red;
+}
+
+.shadow {
+  height: 45px;
+  width: 100%;
+}
+
+footer {
+  padding-top: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.link img {
+  width: 40px;
+  height: 40px;
+}
