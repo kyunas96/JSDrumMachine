@@ -15,6 +15,12 @@
 #drum-machine-header {
   font-family: 'Serif-Gothic';
   color: #E4570F;
+  padding-bottom: 25px;
+  width: 1000px;
+}
+
+#drum-machine-header span {
+  font-size: 70%;
 }
 
 .drum-machine {
