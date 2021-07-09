@@ -47,11 +47,7 @@
 }
 
 .drum-machine-housing {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   width: 92%;
-  padding: 0 30px;
 }
 
 .drum-machine-shoulder {
@@ -63,13 +59,25 @@
 .drum-machine-upper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
   height: 100px;
 }
 
 .main-controls {
   width: 100%;
+}
+
+.main-controls-left{
+
+}
+
+.slider-container{
+
+}
+
+.slider{
+  
 }
 
 .drum-machine-upper-left {
@@ -194,6 +202,10 @@
   align-items: center;
 }
 
+.drum-cell-header span{
+  font-size: 14px;
+}
+
 .drum-cell-button {
   width: 100%;
   height: 60px;
@@ -220,14 +232,9 @@
 }
 
 .indicator {
-  /* position: relative; */
-  /* top: 5px; */
-  /* left: -10px; */
-  height: 8px;
+  height: 6px;
   width: 12px;
-  /* margin: 0 0 7px 0; */
   background-color: rgba(0, 0, 0, 0.7);
-  /* border-radius: 50%; */
 }
 
 .armed {

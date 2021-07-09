@@ -32,6 +32,13 @@ body {
   height: 400px;
 }
 
+.drum-machine-housing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
 .title-container {
   display: flex;
   flex-direction: row;
