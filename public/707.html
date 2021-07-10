@@ -7,6 +7,9 @@
     <link href="./public/assets/css/reset.css" rel="stylesheet" />
     <link href="./public/assets/css/drum_machine.css" rel="stylesheet" />
     <link href="./public/assets/css/707.css" rel="stylesheet" />
+    <link href="./public/assets/css/input_knob.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs" defer></script>
+    <script src="https://unpkg.com/input-knob" defer></script>
     <script src="./public/bundle.js"></script>
     <title>JS-707</title>
   </head>
@@ -26,6 +29,7 @@
               <div class="info-display">
                 <input type="text" id="tempo-display" />
                 <select id="sample-display"></select>
+                <input-knob value="50" scale="10" min="0" max="100"></input-knob>
               </div>
               <div id="sliders">
                 <div class="slider-slice">
