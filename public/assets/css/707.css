@@ -84,12 +84,17 @@
   height: 100%;
   width: 70%;
   transform-origin: center;
-  /* transform: rotate(-90deg); */
   overflow: hidden;
+  position: relative;
 }
 
 .slider {
+  position: relative;
+  top: 52%;
+  transform-origin: right;
+  transform: rotate(-90deg);
   width: 50px;
+  margin: 0;
   display: flex;
   flex-direction: row;
 }
