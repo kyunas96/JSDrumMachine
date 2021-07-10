@@ -72,7 +72,7 @@
   padding: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .main-controls-left {
@@ -81,21 +81,26 @@
 }
 
 #sliders {
-  /* height: 100%; */
-  width: 5%;
-  transform-origin: center;
+  height: 100%;
+  width: 70%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.slider-slice {
+  width: 30px;
+  height: 100%;
 }
 
 .slider {
   position: relative;
-  top: 52%;
-  left: -55%;
-  transform-origin: right;
+  top: 80%;
+  left: -40%;
+  transform-origin: top;
   transform: rotate(-90deg);
-  width: 50px;
-  height: 25px;
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -105,7 +110,56 @@
   font-size: 12px;
   text-align: center;
   writing-mode: vertical-rl;
-  text-orientation: mixed;
+  text-orientation: sideways;
+  cursor: pointer;
+}
+
+.slider input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* Specific width is required for Firefox. */
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 2px 5px 15px 5px #000000;
+  box-shadow: inset 2px 5px 15px 5px rgba(0, 0, 0, 0.4);
+  /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  width: 15px;
+  height: 20px;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.legend{
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slider-midway{
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.slider-tick{
+  text-align: center;
+  margin-left: 20%;
+  width: 60%;
+  border-bottom: 2px solid black;
 }
 
 .drum-machine-upper-left {
@@ -249,7 +303,7 @@
 }
 
 .drum-cell-button:hover {
-  filter: brightness(85%);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .indicator {
