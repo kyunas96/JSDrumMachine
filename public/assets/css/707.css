@@ -91,16 +91,19 @@
 .slider {
   position: relative;
   top: 52%;
-  left: 0;
+  left: -55%;
   transform-origin: right;
   transform: rotate(-90deg);
   width: 50px;
+  height: 25px;
   margin: 0;
   display: flex;
   flex-direction: row;
 }
 
 .slider span {
+  font-size: 12px;
+  text-align: center;
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
