@@ -16,7 +16,6 @@
   font-family: 'Serif-Gothic';
   color: #E4570F;
   padding-bottom: 25px;
-  width: 1000px;
 }
 
 #drum-machine-header span {
@@ -24,6 +23,9 @@
 }
 
 .drum-machine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -59,7 +61,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
 }
 
 .drum-machine-upper-right {
@@ -72,14 +73,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.drum-machine-lower {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 25%;
-  /* justify-content: space-between; */
 }
 
 .info-display {

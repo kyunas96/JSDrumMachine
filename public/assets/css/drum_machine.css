@@ -20,23 +20,33 @@ body {
 #drum-machine-header {
   font-size: 80px;
   height: 100px;
+  width: 1000px;
   padding: 25px 0;
   text-align: center;
 }
 
-.drum-machine {
+.drum-machine-upper {
+  height: 65%;
+}
+
+.drum-machine-lower {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+  height: 25%;
+}
+
+.drum-machine {
   width: 1000px;
   height: 400px;
 }
 
 .drum-machine-housing {
+  height: 100%;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 0 20px;
+  justify-content: space-between;
 }
 
 .title-container {
