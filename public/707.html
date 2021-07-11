@@ -7,8 +7,11 @@
     <link href="./public/assets/css/reset.css" rel="stylesheet" />
     <link href="./public/assets/css/drum_machine.css" rel="stylesheet" />
     <link href="./public/assets/css/707.css" rel="stylesheet" />
-    <link href="./public/assets/css/input_knob.css" rel="stylesheet"/>
-    <script src="https://unpkg.com/@webcomponents/webcomponentsjs" defer></script>
+    <link href="./public/assets/css/input_knob.css" rel="stylesheet" />
+    <script
+      src="https://unpkg.com/@webcomponents/webcomponentsjs"
+      defer
+    ></script>
     <script src="https://unpkg.com/input-knob" defer></script>
     <script src="./public/bundle.js"></script>
     <title>JS-707</title>
@@ -25,11 +28,21 @@
               <div class="subtitle">JS-707</div>
               <div class="title">Rhythm Composer</div>
             </div>
-            <div class="main-controls">
-              <div class="info-display">
-                <input type="text" id="tempo-display" />
-                <select id="sample-display"></select>
-                <input-knob value="50" scale="10" min="0" max="100"></input-knob>
+            <div class="controls">
+              <div class="controls-left">
+                <div class="info-display">
+                  <input type="text" id="tempo-display" />
+                  <select id="sample-display"></select>
+                </div>
+                <div id="knob-container">
+                  <input-knob
+                    value="10"
+                    scale="140"
+                    min="30"
+                    max="115"
+                  ></input-knob>
+                  <span id="tempo-title">Tempo</span>
+                </div>
               </div>
               <div id="sliders">
                 <div class="slider-slice">
@@ -139,6 +152,12 @@
                     <input type="range" />
                   </div>
                 </div>
+                <div class="slider-slice">
+                  <div class="slider master">
+                    <span>Master</span>
+                    <input type="range" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -153,10 +172,6 @@
                 <div class="stop-button">Stop</div>
               </div>
             </div>
-            <div class="sequencer-tempo-knob">
-              <div class="tempo-knob-container">
-                <div></div>
-              </div>
               <div class="sequencer">
                 <div class="drum-cell" id="bd1" num="0">
                   <div class="drum-cell-title">BD1</div>
@@ -287,7 +302,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

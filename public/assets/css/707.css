@@ -66,18 +66,20 @@
   align-items: center;
 }
 
-.main-controls {
+.controls {
   width: 100%;
-  height: 85%;
+  height: 95%;
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.main-controls-left {
+.controls-left{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
 }
 
 #sliders {
@@ -111,7 +113,7 @@
   text-align: center;
   writing-mode: vertical-rl;
   text-orientation: sideways;
-  cursor: pointer;
+  cursor: default;
 }
 
 .slider input[type=range] {
@@ -133,6 +135,14 @@ input[type=range]::-webkit-slider-thumb {
   width: 15px;
   height: 20px;
   cursor: pointer;
+}
+
+.master input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  width: 15px;
+  height: 30px;
 }
 
 input[type=range]::-ms-track {
@@ -171,7 +181,7 @@ input[type=range]::-ms-track {
 }
 
 .info-display {
-  width: 25%;
+  width: 100%;
   height: 30%;
   display: flex;
   flex-direction: row;
@@ -243,11 +253,18 @@ input[type=range]::-ms-track {
   cursor: pointer;
 }
 
-.sequencer-tempo-knob {
+#knob-container {
   width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.tempo-knob-container {}
+/* #tempo-title{
+  margin-top: 20px;
+} */
 
 .sequencer {
   display: flex;
