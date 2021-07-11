@@ -1,5 +1,6 @@
 import loadSamples from './loadSamples';
 import DrumMachine from './drumMachine';
+import { getTempoFromKnob } from './util';
 import setUpUI from './ui';
 
 let step1 = { kick: true };
@@ -11,8 +12,19 @@ let step6 = { ch: true };
 let step7 = { ch: true };
 let step8 = { clap: true };
 
+function logKnobValue(){
+  console.log(this.value)
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  let drumMachine = new DrumMachine(loadSamples());
+  console.log("entering entry file");
+  const knob = document.querySelector("input-knob");
+  knob.getTempoFromKnob = getTempoFromKnob.bind(this)
+  knob.addEventListener("knob-move-change", () => {
+    // const internalKnob = knob;
+    const stringToNum = parseFloat(knob.value);
+    console.log(getTempoFromKnob(stringToNum))
+  })
   setUpUI(drumMachine);
 
   let bd = document.getElementsByClassName('drum-cell-button');
