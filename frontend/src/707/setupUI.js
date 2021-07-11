@@ -29,13 +29,11 @@ function setupDisplay(drumMachine){
 }
 
 function setupDrumSelector(drumMachine){
-  
+
 }
 
-
-
-
-export function setup707UI() {
-
-  setupKnob()
+export function setup707UI(drumMachine) {
+  createSequencer(drumMachine);
+  createSliders(drumMachine);
+  setupKnob();
 }
