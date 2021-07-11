@@ -19,7 +19,7 @@ function getNormalizedFromKnob(lowerBound, upperBound, input){
 
 function lerpKnobInput(lowerBound, upperBound, normalizedInput){
   const totalRange = upperBound - lowerBound;
-  return totalRange * normalizedInput + lowerBound;
+  return Math.ceil(totalRange * normalizedInput + lowerBound);
 }
 
 function calcIntervalStride(tempo){

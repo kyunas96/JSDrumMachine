@@ -17,10 +17,9 @@ function logKnobValue(){
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("entering entry file");
   const knob = document.querySelector("input-knob");
-  knob.getTempoFromKnob = getTempoFromKnob.bind(this)
-  knob.addEventListener("knob-move-change", () => {
+  // knob.getTempoFromKnob = getTempoFromKnob.bind(this)
+  knob.addEventListener("knob-move-end", () => {
     // const internalKnob = knob;
     const stringToNum = parseFloat(knob.value);
     console.log(getTempoFromKnob(stringToNum))
