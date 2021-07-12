@@ -64,14 +64,6 @@ body {
   justify-content: space-between;
 }
 
-.title-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 25px;
-}
-
 footer {
   padding-top: 50px;
   width: 80%;
