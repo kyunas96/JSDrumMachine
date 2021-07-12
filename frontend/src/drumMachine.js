@@ -22,10 +22,12 @@ export default class DrumMachine {
 
   setTempo(tempo) {
     if(checkTempoInput(tempo)){
+      console.log()
       this.tempo = parseInt(tempo);
     }else{
       this.tempo = this.tempo;
     }
+    return this.tempo;
   }
 
   toggleStep(stepNumber) {

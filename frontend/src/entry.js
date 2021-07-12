@@ -1,6 +1,6 @@
 import loadSamples from './707/loadSamples';
 import DrumMachine from './drumMachine';
-import { setup707UI } from './707/setupUI';
+import { setup808UI } from './808/setupUI';
 
 document.addEventListener("DOMContentLoaded", () => {
   /* 
@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const drumMachine = setup707DrumMachine();
     setup707ViewAndController(drumMachine);
   */
+//  loadSamples();
   const drumMachine = new DrumMachine(loadSamples())
-  setup707UI(drumMachine);
+  setup808UI(drumMachine);
 });
