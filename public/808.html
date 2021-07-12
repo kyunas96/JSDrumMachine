@@ -7,6 +7,13 @@
     <link href="./public/assets/css/reset.css" rel="stylesheet" />
     <link href="./public/assets/css/drum_machine.css" rel="stylesheet" />
     <link href="./public/assets/css/808.css" rel="stylesheet" />
+    <link href="./public/assets/css/input_knob.css" rel="stylesheet" />
+    <link href="./public/assets/css/808_input_knob.css" rel="stylesheet" />
+    <script
+      src="https://unpkg.com/@webcomponents/webcomponentsjs"
+      defer
+    ></script>
+    <script src="https://unpkg.com/input-knob" defer></script>
     <script src="./public/bundle.js"></script>
     <title>JS-808</title>
   </head>
@@ -25,12 +32,163 @@
                 <select id="sample-display"></select>
               </div>
               <div id="tempo-knob-container">
-                <div></div>
+                <input-knob
+                    id="tempo"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                Tempo
               </div>
             </div>
             <div class="upper-right">
               <div id="knobs">
-
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>BD</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>SD</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>LT</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>MT</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>HT</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>RS</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>CP</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>CB</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>CY</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>OH</div>
+              </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                  <div class="mark">|</div>
+                </input-knob>
+                <div>CH</div>
+              </div>
               </div>
               <div class="title-container">
                 <div class="title">Rhythm Composer</div>
@@ -44,8 +202,8 @@
                 <div id="start-button">Start</div>
                 <div id="stop-button">Stop</div>
               </div>
-              <div class="edit-button-container">
-                <div class="edit-button"></div>
+              <div id="edit-button-container">
+                <div id="edit-button"></div>
                 Edit
               </div>
             </div>
