@@ -18,14 +18,7 @@
   padding-bottom: 25px;
 }
 
-#drum-machine-header span {
-  font-size: 70%;
-}
-
 .drum-machine {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -50,24 +43,22 @@
   padding: 0 30px;
 }
 
-.drum-machine-shoulder {
-  width: 4%;
-  height: 100%;
+.shoulder {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.drum-machine-upper {
+.upper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.drum-machine-upper-right {
+.upper-right {
   width: 35%;
 }
 
-.drum-machine-upper-left {
+.upper-left {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -142,7 +133,7 @@
   align-items: center;
 }
 
-.sequencer {
+#sequencer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

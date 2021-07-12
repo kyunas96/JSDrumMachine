@@ -17,6 +17,19 @@ body {
   align-items: center;
 }
 
+.drum-machine {
+  width: 1000px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.shoulder {
+  width: 4%;
+  height: 100%;
+}
+
 #drum-machine-header {
   font-size: 80px;
   height: 100px;
@@ -25,7 +38,11 @@ body {
   text-align: center;
 }
 
-.drum-machine-upper {
+#drum-machine-header span {
+  font-size: 70%;
+}
+
+.upper {
   height: 65%;
 }
 
@@ -34,11 +51,6 @@ body {
   flex-direction: row;
   align-items: center;
   height: 25%;
-}
-
-.drum-machine {
-  width: 1000px;
-  height: 400px;
 }
 
 .drum-machine-housing {
