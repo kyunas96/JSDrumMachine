@@ -12,7 +12,9 @@
   </head>
   <body>
     <div id="container">
-      <span id="drum-machine-header">JavaScript Drum Machine</span>
+      <div id="drum-machine-header">
+        <span> JavaScript Drum Machine </span>
+      </div>
       <div class="drum-machine">
         <div class="shoulder"></div>
         <div class="drum-machine-housing">
@@ -22,7 +24,7 @@
                 <input type="text" id="tempo-display" />
                 <select id="sample-display"></select>
               </div>
-              <div class="tempo-knob">
+              <div id="tempo-knob-container">
                 <div></div>
               </div>
             </div>
@@ -150,10 +152,7 @@
         <div class="shoulder"></div>
       </div>
       <footer>
-        <a
-          class="link"
-          href="https://github.com/yunasty/JSProject/"
-        >
+        <a class="link" href="https://github.com/yunasty/JSProject/">
           <img src="./public/GitHub-Mark-64px.png" />
         </a>
         <a
