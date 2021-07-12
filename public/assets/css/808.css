@@ -127,12 +127,16 @@
   height: 70%;
 }
 
+.drum-machine-lower {
+  width: 100%;
+}
+
 #start-stop-button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60%;
+  height: 100%;
   width: 60%;
   cursor: pointer;
   background: #E4570F;
@@ -146,10 +150,19 @@
   background: #e4560fa8;
 }
 
+#start-stop-button:active {
+  transform: scale(98%);
+}
+
 #start-stop-button div {
   text-align: center;
   display: inline-block;
   width: 80%;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #start-button {
@@ -159,8 +172,8 @@
 .edit-button-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 75%;
+  justify-content: flex-end;
+  height: 100%;
   /* align-self: flex-end; */
 }
 
@@ -176,31 +189,66 @@
 .transport-controls {
   height: 100%;
   width: 15%;
-  padding: 5px;
+  padding: 15px;
+  /* margin-right: 8px; */
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  background-color: #97999A;
+  border-radius: 5px 5px 0 5px;
 }
 
 #sequencer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   width: 85%;
   /* padding: 0 50px; */
 }
 
+#sequencer:last-child .drum-cell-title {
+  border-radius: 0 5px 5px 0;
+}
+
 .drum-cell {
   font-size: 17px;
+  font-family: sans-serif;
   position: relative;
-  width: 30px;
-  height: 80px;
+  width: 6.25%;
+  height: 100%;
+  /* padding: 1%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+}
+
+.drum-cell-button {
+  width: 60%;
+  height: 60%;
+  margin: 10% 0 10% 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.drum-cell-header {
+  height: 15%;
+}
+
+.drum-cell-title {
+  height: 20%;
+  width: 50px;
+  text-align: center;
+  align-self: flex-end;
+  background-color: #97999A;
+}
+
+.drum-cell-button:hover {
+  filter: brightness(85%);
 }
 
 .red {
@@ -217,18 +265,6 @@
 
 .white {
   background-color: rgb(227, 222, 193);
-}
-
-.drum-cell-button {
-  width: 100%;
-  height: 60px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
-
-.drum-cell-button:hover {
-  filter: brightness(85%);
 }
 
 .indicator {

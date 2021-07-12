@@ -8,7 +8,7 @@
     <link href="./public/assets/css/drum_machine.css" rel="stylesheet" />
     <link href="./public/assets/css/808.css" rel="stylesheet" />
     <script src="./public/bundle.js"></script>
-    <title>Document</title>
+    <title>JS-808</title>
   </head>
   <body>
     <div id="container">
@@ -51,103 +51,116 @@
             </div>
             <div id="sequencer">
               <div class="drum-cell" id="bd" num="0">
-                <div class="drum-cell-header">
-                  <span>1</span>
-                </div>
+                <div class="drum-cell-header">1</div>
                 <div class="drum-cell-button red">
                   <div class="indicator"></div>
                 </div>
                 <div class="drum-cell-title">BD</div>
               </div>
-              <div class="drum-cell">
+              <div class="drum-cell" id="sd" num="1">
+                <div class="drum-cell-header">2</div>
+                <div class="drum-cell-button red">
+                  <div class="indicator"></div>
+                </div>
                 <div class="drum-cell-title">SD</div>
-                <div id="sd" num="1" class="drum-cell-button red">
+              </div>
+              <div class="drum-cell" id="lt" num="2">
+                <div class="drum-cell-header">3</div>
+                <div class="drum-cell-button red">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">LT</div>
-                <div id="lt" num="2" class="drum-cell-button red">
+              </div>
+              <div class="drum-cell" id="mt" num="3">
+                <div class="drum-cell-header">4</div>
+                <div class="drum-cell-button red">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">MT</div>
-                <div id="mt" num="3" class="drum-cell-button red">
+              </div>
+              <div class="drum-cell" id="ht" num="4">
+                <div class="drum-cell-header">5</div>
+                <div class="drum-cell-button orange">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">HT</div>
-                <div id="ht" num="4" class="drum-cell-button orange">
+              </div>
+              <div class="drum-cell" id="rs" num="5">
+                <div class="drum-cell-header">6</div>
+                <div class="drum-cell-button orange">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">RS</div>
-                <div id="rs" num="5" class="drum-cell-button orange">
+              </div>
+              <div class="drum-cell" id="cp" num="6">
+                <div class="drum-cell-header">7</div>
+                <div class="drum-cell-button orange">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">CP</div>
-                <div id="cp" num="6" class="drum-cell-button orange">
+              </div>
+              <div class="drum-cell" id="cb" num="7">
+                <div class="drum-cell-header">8</div>
+                <div class="drum-cell-button orange">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">CB</div>
-                <div id="cb" num="7" class="drum-cell-button orange">
+              </div>
+              <div class="drum-cell" id="cy" num="8">
+                <div class="drum-cell-header">9</div>
+                <div class="drum-cell-button yellow">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">CY</div>
-                <div id="cy" num="8" class="drum-cell-button yellow">
+              </div>
+              <div class="drum-cell" id="oh" num="9">
+                <div class="drum-cell-header">10</div>
+                <div class="drum-cell-button yellow">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">OH</div>
-                <div id="oh" num="9" class="drum-cell-button yellow">
+              </div>
+              <div class="drum-cell" id="ch" num="10">
+                <div class="drum-cell-header">11</div>
+                <div class="drum-cell-button yellow">
                   <div class="indicator"></div>
                 </div>
-              </div>
-              <div class="drum-cell">
                 <div class="drum-cell-title">CH</div>
-                <div id="ch" num="10" class="drum-cell-button yellow">
-                  <div class="indicator"></div>
-                </div>
               </div>
-              <div class="drum-cell">
-                <div class="drum-cell-title"></div>
-                <div num="11" class="drum-cell-button yellow">
+              <div class="drum-cell" num="11">
+                <div class="drum-cell-header">12</div>
+                <div class="drum-cell-button yellow">
                   <div class="indicator"></div>
                 </div>
+                <div class="drum-cell-title"></div>
               </div>
-              <div class="drum-cell">
-                <div class="drum-cell-title"></div>
-                <div num="12" class="drum-cell-button white">
+              <div class="drum-cell" num="12">
+                <div class="drum-cell-header">13</div>
+                <div class="drum-cell-button white">
                   <div class="indicator"></div>
                 </div>
+                <div class="drum-cell-title"></div>
               </div>
-              <div class="drum-cell">
-                <div class="drum-cell-title"></div>
-                <div num="13" class="drum-cell-button white">
+              <div class="drum-cell" num="13">
+                <div class="drum-cell-header">14</div>
+                <div class="drum-cell-button white">
                   <div class="indicator"></div>
                 </div>
+                <div class="drum-cell-title"></div>
               </div>
-              <div class="drum-cell">
-                <div class="drum-cell-title"></div>
-                <div num="14" class="drum-cell-button white">
+              <div class="drum-cell" num="14">
+                <div class="drum-cell-header">15</div>
+                <div class="drum-cell-button white">
                   <div class="indicator"></div>
                 </div>
+                <div class="drum-cell-title"></div>
               </div>
-              <div class="drum-cell">
-                <div class="drum-cell-title"></div>
-                <div num="15" class="drum-cell-button white">
+              <div class="drum-cell" num="15">
+                <div class="drum-cell-header">16</div>
+                <div class="drum-cell-button white">
                   <div class="indicator"></div>
                 </div>
+                <div class="drum-cell-title"></div>
               </div>
             </div>
           </div>
