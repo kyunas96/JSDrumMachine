@@ -1,0 +1,18 @@
+export default [
+  "BD1",
+  "BD2",
+  "SD1",
+  "SD2",
+  "LT",
+  "MT",
+  "HT",
+  "RS",
+  "CP",
+  "CB",
+  "TB",
+  "CH1",
+  "CH2",
+  "OH",
+  "CR",
+  "CY",
+];

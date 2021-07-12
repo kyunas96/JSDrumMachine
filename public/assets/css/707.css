@@ -266,7 +266,7 @@ input[type=range]::-ms-track {
   margin-top: 20px;
 } */
 
-.sequencer {
+#sequencer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
