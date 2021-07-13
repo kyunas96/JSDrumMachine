@@ -1,9 +1,3 @@
-export default function StepContainer(drumNames){
-  let container = {};
-
-  drumNames.forEach(drum => {
-    container[drum] = false;
-  });
-
-  return container;
+export default function StepContainer(numDrums){
+  return new Array(numDrums).fill(false);
 }

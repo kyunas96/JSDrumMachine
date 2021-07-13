@@ -310,6 +310,10 @@
   border-radius: 50%;
 }
 
+.armed {
+  background-color: red;;
+}
+
 .shadow {
   height: 45px;
   width: 100%;
