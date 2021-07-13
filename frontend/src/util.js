@@ -1,5 +1,3 @@
-var lerp = require('lerp');
-
 const KNOB_MIN = -40;
 const KNOB_MAX = 40;
 const TEMPO_MIN = 50;
@@ -17,9 +15,27 @@ function getNormalizedFromKnob(lowerBound, upperBound, input){
   return adjustedInput / totalRange;
 }
 
+
 function lerpKnobInput(lowerBound, upperBound, normalizedInput){
   const totalRange = upperBound - lowerBound;
   return Math.ceil(totalRange * normalizedInput + lowerBound);
+}
+
+function getKnobValFromTempo(tempo){
+  const normalized = getNormalizedFromTempo(TEMPO_MIN, TEMPO_MAX, tempo);
+  return lerpTempo(KNOB_MIN, KNOB_MAX, normalized);
+}
+
+function getNormalizedFromTempo(lowerBound, upperBound, input){
+  const totalRange = upperBound - lowerBound;
+  console.log("totalRange", totalRange)
+  const adjuestedInput = input - lowerBound;
+  return adjuestedInput / totalRange;
+}
+
+function lerpTempo(lowerBound, upperBound, normalizedInput){
+  const totalRange = Math.abs(upperBound) + Math.abs(lowerBound);
+  return Math.ceil(totalRange * normalizedInput - Math.abs(lowerBound));
 }
 
 function calcIntervalStride(tempo){
@@ -38,6 +54,7 @@ function checkTempoInput(str){
 
 module.exports = {
   getTempoFromKnob,
+  getKnobValFromTempo,
   calcIntervalStride,
   checkTempoInput
 }

@@ -1,4 +1,4 @@
-import { getTempoFromKnob } from "../util";
+import { getTempoFromKnob, getKnobValFromTempo } from "../util";
 import { drumNames } from "./drumNames";
 
 function setupKnob() {
@@ -14,9 +14,12 @@ function setupKnob() {
 
 function setupTempoDisplay(drumMachine) {
   const tempoDisplay = document.getElementById("tempo-display");
+  const knob = document.querySelector("input-knob#tempo");
   tempoDisplay.value = drumMachine.tempo;
   tempoDisplay.onchange = (e) => {
     drumMachine.setTempo(e.currentTarget.value);
+    const stringToNum = parseInt(e.currentTarget.value);
+    knob.value = getKnobValFromTempo(stringToNum)
   };
 }
 
@@ -46,8 +49,9 @@ function setupDisplay(drumMachine) {}
 
 function setupDrumSelector(drumMachine) {}
 
-export function setup808UI() {
+export function setup808UI(drumMachine) {
   // createSequencer(drumMachine);
   // createSliders(drumMachine);
+  setupTempoDisplay(drumMachine);
   setupKnob();
 }
