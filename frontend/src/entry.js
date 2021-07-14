@@ -11,5 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   */
 //  loadSamples();
   const drumMachine = new DrumMachine(loadSamples())
+  window.drumMachine = drumMachine;
   setup808Controller(drumMachine);
 });

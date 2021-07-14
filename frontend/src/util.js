@@ -39,7 +39,7 @@ function lerpTempo(lowerBound, upperBound, normalizedInput){
 }
 
 function calcIntervalStride(tempo){
-  return tempo / 600;
+  return 60000 / tempo;
 }
 
 function checkTempoInput(str){

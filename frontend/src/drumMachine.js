@@ -7,7 +7,7 @@ export default class DrumMachine {
     this.drums = sounds;
     this.currentSoundIndex = 0;
     this.currentSoundName = drumNames[this.currentSoundIndex];
-    this.setTempo(120);
+    this.setTempo(200);
     this.intervalStride = calcIntervalStride(this.tempo);
     this.playing = false;
     this.editing = false;
@@ -15,7 +15,8 @@ export default class DrumMachine {
     this.playStep = this.playStep.bind(this);
     this.checkStep = this.checkStep.bind(this);
     this.setDeceleratingTimeout = this.setDeceleratingTimeout.bind(this);
-    this.player;
+    this.player = null;
+    this.playSound = this.playSound.bind(this);
     this.currentStep = 0;
   }
 
@@ -26,12 +27,13 @@ export default class DrumMachine {
   }
 
   cancelPlay(){
+    console.log("player", this.player)
     clearInterval(this.player);
   }
 
-  setCurrentSound(name) {
+  setCurrentSound(drumNum) {
     if (!this.recording) {
-      this.currentSound = name;
+      this.currentSoundName = drumNum;
     }
   }
 
@@ -47,6 +49,7 @@ export default class DrumMachine {
 
   toggleStep(stepNumber) {
     let curStep = this.sequencer[stepNumber];
+    console.log("curStep", curStep);
     curStep[this.currentSoundIndex] = !curStep[this.currentSoundIndex]
     console.log(this.sequencer);
     this.toggleIndicators();
@@ -96,6 +99,13 @@ export default class DrumMachine {
   playStep() {
     const curStep = this.sequencer[this.checkStep()];
     console.log("playing step: " + JSON.stringify(curStep));
+    console.log(this.drums);
+    for(let i = 0; i < this.sequencer.length; i++){
+      if(curStep[i] === true){
+        console.log(this.drums[i])
+        this.drums[i].play()
+      }
+    }
 
     // for (const [drum, trigger] of Object.entries(curStep)) {
     //   if (trigger) {
@@ -132,8 +142,9 @@ export default class DrumMachine {
     return this.tempo;
   }
 
-  playSound(sound) {
-    sound.play();
+  playSound(drumNum) {
+    console.log("drumNum", drumNum)
+    this.drums[drumNum].play();
   }
 
   toggleEdit() {
@@ -147,10 +158,17 @@ export default class DrumMachine {
   }
 
   togglePlay() {
-    this.playing = !this.playing;
-    console.log("playing: " + this.playing);
-    if(this.playing){
+    // this.playing = !this.playing;
+    // console.log("playing: " + this.playing);
+    // if(this.playing){
+    //   this.play();
+    // }
+
+    if(this.player === null){
       this.play();
+    }else{
+      this.cancelPlay();
+      this.player = null;
     }
   }
 

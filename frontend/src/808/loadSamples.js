@@ -56,7 +56,7 @@ export default function setup() {
     volume: 1.0,
   });
 
-  return {
+  return [
     bd,
     sd,
     lt,
@@ -68,5 +68,5 @@ export default function setup() {
     cy,
     oh,
     ch,
-  };
+  ];
 }

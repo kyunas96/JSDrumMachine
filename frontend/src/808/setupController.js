@@ -41,7 +41,7 @@ function bindSoundsToCells(drumMachine) {
   drumCells.forEach((drum, i) => {
     if (drum.id !== "") {
       drum.onclick = drumPlayAndToggle(drumMachine, drum);
-      mapSoundToKey(drumMachine, drum.id, keysForDrums[i]);
+      mapSoundToKey(drumMachine, i, keysForDrums[i]);
     }else{
       drum.onclick = drumToggle(drumMachine, drum);
     }
@@ -49,12 +49,11 @@ function bindSoundsToCells(drumMachine) {
 }
 
 function drumPlayAndToggle(drumMachine, drum) {
-  const drumId = drum.id;
   const drumNum = drum.getAttribute("num");
   return function () {
     if (!drumMachine.editing) {
-      drumMachine.setCurrentSound(drumId);
-      drumMachine.playSound(drumMachine.drums[drumId]);
+      drumMachine.setCurrentSound(drumNum);
+      drumMachine.playSound(drumNum);
     } else {
       // in the case that the drumMachine is in edit mode, when drum cells are
       // clicked they should toggle the `currentSound` in the stepContainer
@@ -68,11 +67,11 @@ function drumPlayAndToggle(drumMachine, drum) {
   };
 }
 
-function mapSoundToKey(drumMachine, drumName, key) {
+function mapSoundToKey(drumMachine, drumNum, key) {
   addEventListener("keydown", function (e) {
     if (e.key === key) {
-      drumMachine.playSound(drumMachine.drums[drumName]);
-      drumMachine.setCurrentSound(drumName);
+      drumMachine.playSound(drumNum);
+      drumMachine.setCurrentSound(drumNum);
     }
   });
 }
