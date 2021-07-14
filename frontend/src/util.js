@@ -15,6 +15,9 @@ function getNormalizedFromKnob(lowerBound, upperBound, input){
   return adjustedInput / totalRange;
 }
 
+function getVolumeFromKnob(input){
+  return getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, input);
+}
 
 function lerpKnobInput(lowerBound, upperBound, normalizedInput){
   const totalRange = upperBound - lowerBound;
@@ -53,6 +56,7 @@ function checkTempoInput(str){
 }
 
 module.exports = {
+  getVolumeFromKnob,
   getTempoFromKnob,
   getKnobValFromTempo,
   calcIntervalStride,

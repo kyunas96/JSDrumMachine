@@ -1,6 +1,8 @@
-import { getTempoFromKnob, getKnobValFromTempo } from "../util";
+import { getTempoFromKnob, getKnobValFromTempo, getVolumeFromKnob } from "../util";
 import keysForDrums from "./drumKeys";
 import drumNames from "./drumNames";
+import { throttle } from 'underscore';
+import { Howler } from 'howler';
 
 function setupKnob() {
   const knob = document.querySelector("input-knob#tempo");
@@ -11,6 +13,38 @@ function setupKnob() {
     tempoDisplay.value = newVal;
     console.log(newVal);
   });
+}
+
+function setupVolumeSliders(drumMachine){
+  const sliders = document.querySelectorAll("input-knob.gain")
+  for(let i = 0; i < sliders.length; i++){
+    const curSlider = sliders[i];
+    curSlider.value = 40;
+
+    function setVolumeFromSlider(){
+      const stringToNum = parseFloat(this.value);
+      const volume = getVolumeFromKnob(stringToNum);
+      drumMachine.drums[i].volume(volume);
+    }
+
+    let sliderFunc;
+
+    if(i === sliders.length - 1){
+      function masterVolume(){
+        const stringToNum = parseFloat(this.value);
+        const volume = getVolumeFromKnob(stringToNum);
+        Howler.volume(volume);
+      }
+      sliderFunc = throttle(masterVolume, 100).bind(curSlider);
+    }else{
+      sliderFunc = throttle(setVolumeFromSlider, 100).bind(curSlider)
+    }
+
+    curSlider.addEventListener("knob-move-change", () => {
+      sliderFunc()
+      console.log(drumMachine.drums)
+    })
+  }
 }
 
 function bindTransportControls(drumMachine){
@@ -90,5 +124,6 @@ export function setup808Controller(drumMachine) {
   bindTransportControls(drumMachine);
   setupTempoDisplay(drumMachine);
   setupKnob();
+  setupVolumeSliders(drumMachine);
   bindSoundsToCells(drumMachine);
 }

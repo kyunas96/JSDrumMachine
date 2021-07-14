@@ -1,6 +1,7 @@
 import { calcIntervalStride, checkTempoInput } from "./util";
 import StepContainer from "./stepContainer";
 import { drumNames } from "./config";
+import AdjustingInterval from "./accurateTimer";
 
 export default class DrumMachine {
   constructor(sounds) {
@@ -15,33 +16,23 @@ export default class DrumMachine {
     this.playStep = this.playStep.bind(this);
     this.checkStep = this.checkStep.bind(this);
     this.setDeceleratingTimeout = this.setDeceleratingTimeout.bind(this);
-    this.player = null;
     this.playSound = this.playSound.bind(this);
     this.currentStep = 0;
-  }
-
-  play(){
-    this.player = setInterval((stepNum) => {
-      this.playStep();
-    }, this.tempo);
-  }
-
-  cancelPlay(){
-    console.log("player", this.player)
-    clearInterval(this.player);
+    this.player = new AdjustingInterval(this.playStep, 200);
+    console.log("dm", this);
   }
 
   setCurrentSound(drumNum) {
     if (!this.recording) {
-      this.currentSoundName = drumNum;
+      this.currentSoundIndex = drumNum;
     }
   }
 
   setTempo(tempo) {
-    if(checkTempoInput(tempo)){
-      console.log()
+    if (checkTempoInput(tempo)) {
+      console.log();
       this.tempo = parseInt(tempo);
-    }else{
+    } else {
       this.tempo = this.tempo;
     }
     return this.tempo;
@@ -50,7 +41,7 @@ export default class DrumMachine {
   toggleStep(stepNumber) {
     let curStep = this.sequencer[stepNumber];
     console.log("curStep", curStep);
-    curStep[this.currentSoundIndex] = !curStep[this.currentSoundIndex]
+    curStep[this.currentSoundIndex] = !curStep[this.currentSoundIndex];
     console.log(this.sequencer);
     this.toggleIndicators();
   }
@@ -58,9 +49,11 @@ export default class DrumMachine {
   toggleIndicators() {
     let activeCells = this.grabActiveCells();
     let drumNodes = document.getElementsByClassName("drum-cell-button");
-    let drumCellButtons = Array.from(drumNodes);
-    for (let i = 0; i < drumCellButtons.length; i++) {
-      let curIndicator = drumCellButtons[i].getElementsByClassName("indicator")[0];
+    console.log("drumNodes", drumNodes)
+    for (let i = 0; i < drumNodes.length; i++) {
+      let curIndicator =
+        drumNodes[i].getElementsByClassName("indicator")[0];
+        console.log(curIndicator);
       if (activeCells.includes(i)) {
         curIndicator.classList.add("armed");
       } else {
@@ -72,11 +65,12 @@ export default class DrumMachine {
   grabActiveCells() {
     // sequencer is an array, no need for `for...in` loop
     let activeCellIndices = [];
-    this.sequencer.forEach((step, i) => {
-      if (step[this.currentSound] === true) {
-        activeCellIndices.push(i);
+    for(let i = 0; i < this.sequencer.length; i++){
+      const curStep = this.sequencer[i];
+      if(curStep[this.currentSoundIndex] === true){
+        activeCellIndices.push(i)
       }
-    });
+    }
     return activeCellIndices;
   }
 
@@ -89,8 +83,8 @@ export default class DrumMachine {
     }
   }
 
-  checkStep(){
-    if(this.currentStep > 15){
+  checkStep() {
+    if (this.currentStep > 15) {
       this.currentStep = 0;
     }
     return this.currentStep++;
@@ -100,50 +94,42 @@ export default class DrumMachine {
     const curStep = this.sequencer[this.checkStep()];
     console.log("playing step: " + JSON.stringify(curStep));
     console.log(this.drums);
-    for(let i = 0; i < this.sequencer.length; i++){
-      if(curStep[i] === true){
-        console.log(this.drums[i])
-        this.drums[i].play()
+    for (let i = 0; i < this.sequencer.length; i++) {
+      if (curStep[i] === true) {
+        console.log(this.drums[i]);
+        this.drums[i].play();
       }
     }
-
-    // for (const [drum, trigger] of Object.entries(curStep)) {
-    //   if (trigger) {
-    //     this.drums[drum].play();
-    //   }
-    // }
   }
 
   setDeceleratingTimeout(callback, factor, times) {
     const checkPlaying = this.isPlaying.bind(this);
     const checkTempo = this.getTempo.bind(this);
-    var internalCallback = (function (tick) {
+    var internalCallback = function (tick) {
       return function () {
-        if(tick++ >= 15){
+        if (tick++ >= 15) {
           tick = 0;
         }
-        console.log(tick)
+        console.log(tick);
         if (checkPlaying()) {
           window.setTimeout(internalCallback, factor);
           callback(tick);
         }
       };
-    }).bind(this)(times);
+    }.bind(this)(times);
 
     window.setTimeout(internalCallback, factor);
   }
 
-  isPlaying(){
+  isPlaying() {
     return this.playing;
   }
 
-
-  getTempo(){
+  getTempo() {
     return this.tempo;
   }
 
   playSound(drumNum) {
-    console.log("drumNum", drumNum)
     this.drums[drumNum].play();
   }
 
@@ -164,11 +150,12 @@ export default class DrumMachine {
     //   this.play();
     // }
 
-    if(this.player === null){
-      this.play();
-    }else{
-      this.cancelPlay();
-      this.player = null;
+    if (this.isPlaying) {
+      this.player.stop();
+      this.isPlaying = false;
+    } else {
+      this.player.start();
+      this.isPlaying = true;
     }
   }
 
