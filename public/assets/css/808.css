@@ -19,7 +19,7 @@
 }
 
 #drum-machine-header span {
-  transform: scale(1.5, 0.8);
+  transform: scale(1.25, 0.8);
 }
 
 .drum-machine {
@@ -131,8 +131,8 @@
 
 #sample-display {
   height: 100%;
-  width: 25%;
-  appearance: none;
+  width: 100px;
+  padding-left: 7px;
   text-align: center;
   font-family: 'Digi';
   color: #E4570F;
@@ -140,6 +140,11 @@
   border: none;
   font-size: 40px;
   cursor: pointer;
+  overflow: hidden;
+}
+
+option{
+  font-size: 20px;
 }
 
 #tempo-knob-container {
@@ -149,6 +154,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
 }
 
 .drum-machine-lower {

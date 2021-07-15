@@ -1,11 +1,12 @@
 const KNOB_MIN = -40;
 const KNOB_MAX = 40;
-const TEMPO_MIN = 50;
-const TEMPO_MAX = 200;
+const SPEED_MIN = 50;
+const SPEED_MAX = 200;
 
 function getTempoFromKnob(value){
   const normalized = getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, value);
-  return lerpKnobInput(TEMPO_MIN, TEMPO_MAX, normalized);
+  const diff = 1.0 - normalized;
+  return lerpKnobInput(SPEED_MIN, SPEED_MAX, diff);
 }
 
 // getTempoFromKnob helper functions
@@ -16,7 +17,7 @@ function getNormalizedFromKnob(lowerBound, upperBound, input){
 }
 
 function getVolumeFromKnob(input){
-  return getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, input);
+  return getNo(KNOB_MIN, KNOB_MAX, input);
 }
 
 function lerpKnobInput(lowerBound, upperBound, normalizedInput){
@@ -41,10 +42,6 @@ function lerpTempo(lowerBound, upperBound, normalizedInput){
   return Math.ceil(totalRange * normalizedInput - Math.abs(lowerBound));
 }
 
-function calcIntervalStride(tempo){
-  return 60000 / tempo;
-}
-
 function checkTempoInput(str){
   const regEx = /^\d+$/;
   if(!regEx.test(str)){
@@ -56,9 +53,11 @@ function checkTempoInput(str){
 }
 
 module.exports = {
+  KNOB_MIN,
+  KNOB_MAX,
+  getNormalizedFromKnob,
   getVolumeFromKnob,
   getTempoFromKnob,
   getKnobValFromTempo,
-  calcIntervalStride,
   checkTempoInput
 }

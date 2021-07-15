@@ -1,4 +1,4 @@
-import { calcIntervalStride, checkTempoInput } from "./util";
+import { checkTempoInput } from "./util";
 import StepContainer from "./stepContainer";
 import { drumNames } from "./config";
 import AdjustingInterval from "./accurateTimer";
@@ -8,18 +8,21 @@ export default class DrumMachine {
     this.drums = sounds;
     this.currentSoundIndex = 0;
     this.currentSoundName = drumNames[this.currentSoundIndex];
-    this.setTempo(200);
-    this.intervalStride = calcIntervalStride(this.tempo);
+    this.speed = 175;
     this.playing = false;
     this.editing = false;
     this.sequencer = new Array(16).fill().map((u) => StepContainer(11));
     this.playStep = this.playStep.bind(this);
     this.checkStep = this.checkStep.bind(this);
-    this.setDeceleratingTimeout = this.setDeceleratingTimeout.bind(this);
     this.playSound = this.playSound.bind(this);
     this.currentStep = 0;
-    this.player = new AdjustingInterval(this.playStep, 200);
+    this.player = new AdjustingInterval(this.playStep, this.speed);
     console.log("dm", this);
+  }
+
+  changeSpeed(newSpeed){
+    this.speed = newSpeed;
+    this.player.interval = newSpeed;
   }
 
   setCurrentSound(drumNum) {
@@ -102,25 +105,6 @@ export default class DrumMachine {
     }
   }
 
-  setDeceleratingTimeout(callback, factor, times) {
-    const checkPlaying = this.isPlaying.bind(this);
-    const checkTempo = this.getTempo.bind(this);
-    var internalCallback = function (tick) {
-      return function () {
-        if (tick++ >= 15) {
-          tick = 0;
-        }
-        console.log(tick);
-        if (checkPlaying()) {
-          window.setTimeout(internalCallback, factor);
-          callback(tick);
-        }
-      };
-    }.bind(this)(times);
-
-    window.setTimeout(internalCallback, factor);
-  }
-
   isPlaying() {
     return this.playing;
   }
@@ -150,12 +134,12 @@ export default class DrumMachine {
     //   this.play();
     // }
 
-    if (this.isPlaying) {
+    if (this.playing) {
       this.player.stop();
-      this.isPlaying = false;
+      this.playing = false;
     } else {
       this.player.start();
-      this.isPlaying = true;
+      this.playing = true;
     }
   }
 

@@ -1,27 +1,60 @@
-import { getTempoFromKnob, getKnobValFromTempo, getVolumeFromKnob } from "../util";
+import {
+  KNOB_MIN,
+  KNOB_MAX,
+  getTempoFromKnob,
+  getKnobValFromTempo,
+  getVolumeFromKnob,
+  getNormalizedFromKnob,
+} from "../util";
 import keysForDrums from "./drumKeys";
 import drumNames from "./drumNames";
-import { throttle } from 'underscore';
-import { Howler } from 'howler';
+import { throttle } from "underscore";
+import { Howler } from "howler";
 
-function setupKnob() {
+function setupKnob(drumMachine) {
   const knob = document.querySelector("input-knob#tempo");
+  knob.value = -25.6;
   const tempoDisplay = document.getElementById("tempo-display");
+  tempoDisplay.value = 1.8;
   knob.addEventListener("knob-move-end", () => {
     const stringToNum = parseFloat(knob.value);
-    const newVal = getTempoFromKnob(stringToNum);
-    tempoDisplay.value = newVal;
-    console.log(newVal);
+    const normalized = getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, stringToNum);
+    console.log(normalized);
+    drumMachine.changeSpeed(getTempoFromKnob(stringToNum));
+    const min = Math.max(0.10, normalized)
+    tempoDisplay.value = (min * 10.0).toString().slice(0, 4);
   });
 }
 
-function setupVolumeSliders(drumMachine){
-  const sliders = document.querySelectorAll("input-knob.gain")
-  for(let i = 0; i < sliders.length; i++){
+function setupDrumSelector(drumMachine, drumNames){
+  const sampleDisplay = document.getElementById("sample-display");
+  console.log(sampleDisplay);
+  const options = [];
+  drumNames.forEach((drumName, i) => {
+    const ele = document.createElement("option");
+    ele.innerText = drumName;
+    ele.value = i;
+    sampleDisplay.appendChild(ele);
+  })
+
+  sampleDisplay.onchange = function(e) {
+    drumMachine.setCurrentSound(e.target.value)
+  }
+}
+
+function createDrumSelect(drumName, id){
+  return `
+    <option value=${id}>${drumName}</option>
+  `
+}
+
+function setupVolumeSliders(drumMachine) {
+  const sliders = document.querySelectorAll("input-knob.gain");
+  for (let i = 0; i < sliders.length; i++) {
     const curSlider = sliders[i];
     curSlider.value = 40;
 
-    function setVolumeFromSlider(){
+    function setVolumeFromSlider() {
       const stringToNum = parseFloat(this.value);
       const volume = getVolumeFromKnob(stringToNum);
       drumMachine.drums[i].volume(volume);
@@ -29,25 +62,25 @@ function setupVolumeSliders(drumMachine){
 
     let sliderFunc;
 
-    if(i === sliders.length - 1){
-      function masterVolume(){
+    if (i === sliders.length - 1) {
+      function masterVolume() {
         const stringToNum = parseFloat(this.value);
         const volume = getVolumeFromKnob(stringToNum);
         Howler.volume(volume);
       }
       sliderFunc = throttle(masterVolume, 100).bind(curSlider);
-    }else{
-      sliderFunc = throttle(setVolumeFromSlider, 100).bind(curSlider)
+    } else {
+      sliderFunc = throttle(setVolumeFromSlider, 100).bind(curSlider);
     }
 
     curSlider.addEventListener("knob-move-change", () => {
-      sliderFunc()
-      console.log(drumMachine.drums)
-    })
+      sliderFunc();
+      console.log(drumMachine.drums);
+    });
   }
 }
 
-function bindTransportControls(drumMachine){
+function bindTransportControls(drumMachine) {
   let startStopButton = document.getElementById("start-stop-button");
   startStopButton.onclick = () => drumMachine.togglePlay();
   let editButton = document.getElementById("edit-button-container");
@@ -61,14 +94,12 @@ function setupTempoDisplay(drumMachine) {
   tempoDisplay.onchange = (e) => {
     drumMachine.setTempo(e.currentTarget.value);
     const stringToNum = parseInt(e.currentTarget.value);
-    knob.value = getKnobValFromTempo(stringToNum)
+    knob.value = getKnobValFromTempo(stringToNum);
   };
 }
 
 function bindSoundsToCells(drumMachine) {
-  let drumCells = Array.from(
-    document.getElementsByClassName("drum-cell")
-  );
+  let drumCells = Array.from(document.getElementsByClassName("drum-cell"));
 
   console.log("drumCells", drumCells);
 
@@ -76,7 +107,7 @@ function bindSoundsToCells(drumMachine) {
     if (drum.id !== "") {
       drum.onclick = drumPlayAndToggle(drumMachine, drum);
       mapSoundToKey(drumMachine, i, keysForDrums[i]);
-    }else{
+    } else {
       drum.onclick = drumToggle(drumMachine, drum);
     }
   });
@@ -119,11 +150,11 @@ function drumToggle(drumMachine, drum) {
   };
 }
 
-
 export function setup808Controller(drumMachine) {
   bindTransportControls(drumMachine);
   setupTempoDisplay(drumMachine);
-  setupKnob();
+  setupDrumSelector(drumMachine, drumNames);
+  setupKnob(drumMachine);
   setupVolumeSliders(drumMachine);
   bindSoundsToCells(drumMachine);
 }

@@ -14,7 +14,7 @@ function AdjustingInterval(workFunc, interval, errorFunc) {
   this.interval = interval;
 
   this.start = function () {
-    expected = Date.now() + this.interval;
+    expected = performance.now() + this.interval;
     timeout = setTimeout(step, this.interval);
   };
 
@@ -23,7 +23,7 @@ function AdjustingInterval(workFunc, interval, errorFunc) {
   };
 
   function step() {
-    let drift = Date.now() - expected;
+    let drift = performance.now() - expected;
     if (drift > that.interval) {
       // You could have some default stuff here too...
       if (errorFunc) errorFunc();
