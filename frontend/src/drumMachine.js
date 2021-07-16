@@ -1,6 +1,6 @@
 import { checkTempoInput } from "./util";
 import StepContainer from "./stepContainer";
-import { drumNames } from "./config";
+import drumNames from "./808/drumNames";
 import AdjustingInterval from "./accurateTimer";
 
 export default class DrumMachine {
