@@ -10,6 +10,7 @@ JSDrumMachine is an interactive drum machine based on the Roland TR-808 original
 
 ### Technologies
   * JavaScript
+  * [input-knob](https://www.npmjs.com/package/input-knob)
   * Howler.js
   * Node.js
   * Express.js
