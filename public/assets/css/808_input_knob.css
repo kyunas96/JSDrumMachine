@@ -1,0 +1,41 @@
+input-knob {
+  box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#tempo {
+  width: 80px;
+  height: 80px;
+}
+
+.gain {
+  width: 40px;
+  height: 40px;
+}
+
+.gain::part(rotator) {
+  background: #ff5602;
+  -webkit-box-shadow: inset 0px 0px 15px 5px #000000;
+  box-shadow: inset 0px 0px 1px 1px #000000;
+}
+
+.gain .mark {
+  font: bold 125% monospace;
+  color: black;
+  /* bottom: 10px; */
+  /* width: 25%; */
+}
+
+input-knob::part(rotator) {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+input-knob.fallback>span.fallback {
+  background: rgba(0, 0, 0, 0.5);
+  width: 80px;
+  height: 80px;
+}
+
+.mark {
+  color: #DD863C;
+}

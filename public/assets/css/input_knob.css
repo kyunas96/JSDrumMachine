@@ -1,0 +1,43 @@
+ input-knob {
+   margin: auto;
+   display: relative;
+   border-radius: 100%;
+ }
+
+ input-knob::part(rotator) {
+   box-sizing: border-box;
+   background: rgba(0, 0, 0, 0.5);
+   /* border: 1rem double #356211; */
+   /* border-bottom: 1rem solid #356211; */
+   border-radius: 100%;
+ }
+
+ input-knob.fallback>span.fallback {
+   display: block;
+   box-sizing: border-box;
+   background: rgba(0, 0, 0, 0.5);
+   /* border: 1rem double #356211; */
+   /* border-bottom: 1rem solid #356211; */
+   border-radius: 100%;
+ }
+
+ .mark {
+   display: relative;
+   bottom: 100px;
+   width: 100%;
+   text-align: center;
+   font: bold 200% monospace;
+ }
+
+ .monitor {
+   width: 20rem;
+   margin: 2rem auto 0 auto;
+   text-align: center;
+ }
+
+ .progress {
+   display: block;
+   width: 20rem;
+   margin: 2rem auto 0 auto;
+   text-align: center;
+ }

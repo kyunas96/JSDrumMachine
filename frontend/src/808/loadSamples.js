@@ -1,10 +1,9 @@
 import { Howl } from "howler";
 
 export default function setup() {
-
   let bd = new Howl({
     src: ["./public/assets/samples/808-bd.wav"],
-    volume: 1.0
+    volume: 1.0,
   });
 
   let sd = new Howl({
@@ -70,4 +69,4 @@ export default function setup() {
     oh,
     ch,
   ];
-};
+}

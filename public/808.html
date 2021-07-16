@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./public/assets/css/reset.css" rel="stylesheet" />
+    <link href="./public/assets/css/drum_machine.css" rel="stylesheet" />
+    <link href="./public/assets/css/808.css" rel="stylesheet" />
+    <link href="./public/assets/css/input_knob.css" rel="stylesheet" />
+    <link href="./public/assets/css/808_input_knob.css" rel="stylesheet" />
+    <script
+      src="https://unpkg.com/@webcomponents/webcomponentsjs"
+      defer
+    ></script>
+    <script src="https://unpkg.com/input-knob" defer></script>
+    <script src="./public/bundle.js"></script>
+    <title>JS-808</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="instructions-modal" class="hidden">
+        <div id="instructions-hide">
+          <img src="./public/assets/css/close.png" />
+        </div>
+        <div id="instructions-title">JS-808</div>
+        <div id="instructions-body">
+          <div id="instructions-header">
+          The JS-808 is an emulation of the
+          <a href="https://en.wikipedia.org/wiki/Roland_TR-808">Roland TR-808</a
+          >, drum machine that was first introduced in 1980 and has become a 
+          staple in the music industry with fans ranging from Tame Impala's 
+          Kevin Parker to Kanye West.
+          </div>
+          <ul>
+            <li>1. Select a sound</li>
+          </ul>
+        </div>
+      </div>
+      <div id="drum-machine-header">
+        <span> JavaScript Drum Machine </span>
+      </div>
+      <div class="drum-machine">
+        <div class="shoulder"></div>
+        <div class="drum-machine-housing">
+          <div class="upper">
+            <div class="upper-left">
+              <div class="info-display">
+                <input type="text" id="tempo-display" />
+                <select id="sample-display"></select>
+              </div>
+              <div id="tempo-knob-container">
+                <input-knob
+                  id="tempo"
+                  value="-40"
+                  scale="100"
+                  min="-40"
+                  max="40"
+                >
+                  <div class="mark">|</div>
+                </input-knob>
+                Speed
+              </div>
+            </div>
+            <div class="upper-right">
+              <div id="knobs">
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>BD</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>SD</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>LT</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>MT</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>HT</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>RS</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CP</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CB</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CY</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>OH</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CH</div>
+                </div>
+                <div class="knob-container">
+                  <div>Gain</div>
+                  <input-knob
+                    class="gain"
+                    value="-40"
+                    scale="100"
+                    min="-40"
+                    max="40"
+                  >
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>Master</div>
+                </div>
+              </div>
+              <div class="title-container">
+                <div class="title">Rhythm Composer</div>
+                <div class="subtitle">JS-808</div>
+              </div>
+            </div>
+          </div>
+          <div class="drum-machine-lower">
+            <div class="transport-controls">
+              <div id="start-stop-button">
+                <div id="start-button">Start</div>
+                <div id="stop-button">Stop</div>
+              </div>
+              <div id="edit-button-container">
+                <div id="edit-button"></div>
+                Edit
+              </div>
+            </div>
+            <div id="sequencer">
+              <div class="drum-cell" id="bd" num="0">
+                <div class="drum-cell-header">1</div>
+                <div class="drum-cell-button red">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">BD</div>
+              </div>
+              <div class="drum-cell" id="sd" num="1">
+                <div class="drum-cell-header">2</div>
+                <div class="drum-cell-button red">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">SD</div>
+              </div>
+              <div class="drum-cell" id="lt" num="2">
+                <div class="drum-cell-header">3</div>
+                <div class="drum-cell-button red">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">LT</div>
+              </div>
+              <div class="drum-cell" id="mt" num="3">
+                <div class="drum-cell-header">4</div>
+                <div class="drum-cell-button red">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">MT</div>
+              </div>
+              <div class="drum-cell" id="ht" num="4">
+                <div class="drum-cell-header">5</div>
+                <div class="drum-cell-button orange">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">HT</div>
+              </div>
+              <div class="drum-cell" id="rs" num="5">
+                <div class="drum-cell-header">6</div>
+                <div class="drum-cell-button orange">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">RS</div>
+              </div>
+              <div class="drum-cell" id="cp" num="6">
+                <div class="drum-cell-header">7</div>
+                <div class="drum-cell-button orange">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">CP</div>
+              </div>
+              <div class="drum-cell" id="cb" num="7">
+                <div class="drum-cell-header">8</div>
+                <div class="drum-cell-button orange">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">CB</div>
+              </div>
+              <div class="drum-cell" id="cy" num="8">
+                <div class="drum-cell-header">9</div>
+                <div class="drum-cell-button yellow">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">CY</div>
+              </div>
+              <div class="drum-cell" id="oh" num="9">
+                <div class="drum-cell-header">10</div>
+                <div class="drum-cell-button yellow">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">OH</div>
+              </div>
+              <div class="drum-cell" id="ch" num="10">
+                <div class="drum-cell-header">11</div>
+                <div class="drum-cell-button yellow">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title">CH</div>
+              </div>
+              <div class="drum-cell" num="11">
+                <div class="drum-cell-header">12</div>
+                <div class="drum-cell-button yellow">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title"></div>
+              </div>
+              <div class="drum-cell" num="12">
+                <div class="drum-cell-header">13</div>
+                <div class="drum-cell-button white">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title"></div>
+              </div>
+              <div class="drum-cell" num="13">
+                <div class="drum-cell-header">14</div>
+                <div class="drum-cell-button white">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title"></div>
+              </div>
+              <div class="drum-cell" num="14">
+                <div class="drum-cell-header">15</div>
+                <div class="drum-cell-button white">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title"></div>
+              </div>
+              <div class="drum-cell" num="15">
+                <div class="drum-cell-header">16</div>
+                <div class="drum-cell-button white">
+                  <div class="indicator"></div>
+                </div>
+                <div class="drum-cell-title"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shoulder"></div>
+      </div>
+      <footer>
+        <a class="link" href="https://github.com/yunasty/JSProject/">
+          <img src="./public/GitHub-Mark-64px.png" />
+        </a>
+        <button id="instructions-reveal">Instructions</button>
+        <a
+          class="link"
+          href="https://www.linkedin.com/in/kevin-yunas-987325183/"
+        >
+          <img src="./public/linkedin_64px.png" />
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>

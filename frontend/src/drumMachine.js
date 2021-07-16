@@ -1,38 +1,50 @@
-import { calcIntervalStride, checkTempoInput } from "./util";
+import { checkTempoInput } from "./util";
 import StepContainer from "./stepContainer";
-import { drumNames } from "./config";
+import drumNames from "./808/drumNames";
+import AdjustingInterval from "./accurateTimer";
 
 export default class DrumMachine {
   constructor(sounds) {
     this.drums = sounds;
-    this.setCurrentSound("bd");
-    this.setTempo(120);
-    this.intervalStride = calcIntervalStride(this.tempo);
+    this.currentSoundIndex = 0;
+    this.currentSoundName = drumNames[this.currentSoundIndex];
+    this.speed = 175;
     this.playing = false;
     this.editing = false;
-    this.sequencer = new Array(16).fill().map((u) => StepContainer(drumNames));
-    this.setDeceleratingTimeout = this.setDeceleratingTimeout.bind(this);
+    this.sequencer = new Array(16).fill().map((u) => StepContainer(11));
+    this.playStep = this.playStep.bind(this);
+    this.checkStep = this.checkStep.bind(this);
+    this.playSound = this.playSound.bind(this);
+    this.currentStep = 0;
+    this.player = new AdjustingInterval(this.playStep, this.speed);
+    console.log("dm", this);
   }
 
-  setCurrentSound(name) {
+  changeSpeed(newSpeed){
+    this.speed = newSpeed;
+    this.player.interval = newSpeed;
+  }
+
+  setCurrentSound(drumNum) {
     if (!this.recording) {
-      this.currentSound = name;
+      this.currentSoundIndex = drumNum;
     }
   }
 
   setTempo(tempo) {
-    if(checkTempoInput(tempo)){
+    if (checkTempoInput(tempo)) {
+      console.log();
       this.tempo = parseInt(tempo);
-    }else{
+    } else {
       this.tempo = this.tempo;
     }
+    return this.tempo;
   }
 
   toggleStep(stepNumber) {
     let curStep = this.sequencer[stepNumber];
-    Object.assign(curStep, {
-      [this.currentSound]: !curStep[this.currentSound],
-    });
+    console.log("curStep", curStep);
+    curStep[this.currentSoundIndex] = !curStep[this.currentSoundIndex];
     console.log(this.sequencer);
     this.toggleIndicators();
   }
@@ -40,13 +52,15 @@ export default class DrumMachine {
   toggleIndicators() {
     let activeCells = this.grabActiveCells();
     let drumNodes = document.getElementsByClassName("drum-cell-button");
-    let drumCellButtons = Array.from(drumNodes);
-    for (let i = 0; i < drumCellButtons.length; i++) {
-      let curCell = drumCellButtons[i].children[0];
+    console.log("drumNodes", drumNodes)
+    for (let i = 0; i < drumNodes.length; i++) {
+      let curIndicator =
+        drumNodes[i].getElementsByClassName("indicator")[0];
+        console.log(curIndicator);
       if (activeCells.includes(i)) {
-        curCell.classList.add("armed");
+        curIndicator.classList.add("armed");
       } else {
-        curCell.classList.remove("armed");
+        curIndicator.classList.remove("armed");
       }
     }
   }
@@ -54,11 +68,12 @@ export default class DrumMachine {
   grabActiveCells() {
     // sequencer is an array, no need for `for...in` loop
     let activeCellIndices = [];
-    this.sequencer.forEach((step, i) => {
-      if (step[this.currentSound] === true) {
-        activeCellIndices.push(i);
+    for(let i = 0; i < this.sequencer.length; i++){
+      const curStep = this.sequencer[i];
+      if(curStep[this.currentSoundIndex] === true){
+        activeCellIndices.push(i)
       }
-    });
+    }
     return activeCellIndices;
   }
 
@@ -71,72 +86,35 @@ export default class DrumMachine {
     }
   }
 
-  play() {
-    const myFunc = this.playStep.bind(this);
-    console.log(myFunc);
-    this.setDeceleratingTimeout(myFunc, 125, -1);
+  checkStep() {
+    if (this.currentStep > 15) {
+      this.currentStep = 0;
+    }
+    return this.currentStep++;
   }
 
-  playStep(stepNum) {
-    const curStep = this.sequencer[stepNum];
-    console.log("playing step: " + stepNum);
-    for (const [drum, trigger] of Object.entries(curStep)) {
-      if (trigger) {
-        this.drums[drum].play();
+  playStep() {
+    const curStep = this.sequencer[this.checkStep()];
+    console.log("playing step: " + JSON.stringify(curStep));
+    console.log(this.drums);
+    for (let i = 0; i < this.sequencer.length; i++) {
+      if (curStep[i] === true) {
+        console.log(this.drums[i]);
+        this.drums[i].play();
       }
     }
   }
 
-  // setDeceleratingTimeout(callback, factor, stepNum) {
-  //   console.log(factor);
-  //   console.log("playing: " + this.playing);
-
-  //   var internalCallback = (function (tick) {
-  //     console.log("ticking: " + tick);
-  //     if (tick++ > 15) {
-  //       tick = 0;
-  //     }
-  //     return function () {
-  //       if (this.playing) {
-  //         window.setTimeout(internalCallback, factor, tick);
-  //         callback(tick);
-  //       }
-  //     };
-  //   })(stepNum);
-
-  //   window.setTimeout(internalCallback, factor, stepNum);
-  // }
-
-  setDeceleratingTimeout(callback, factor, times) {
-    const checkPlaying = this.isPlaying.bind(this);
-    const checkTempo = this.getTempo.bind(this);
-    var internalCallback = (function (tick) {
-      return function () {
-        if(tick++ >= 15){
-          tick = 0;
-        }
-        console.log(tick)
-        if (checkPlaying()) {
-          window.setTimeout(internalCallback, factor);
-          callback(tick);
-        }
-      };
-    }).bind(this)(times);
-
-    window.setTimeout(internalCallback, factor);
-  }
-
-  isPlaying(){
+  isPlaying() {
     return this.playing;
   }
 
-
-  getTempo(){
+  getTempo() {
     return this.tempo;
   }
 
-  playSound(sound) {
-    sound.play();
+  playSound(drumNum) {
+    this.drums[drumNum].play();
   }
 
   toggleEdit() {
@@ -150,10 +128,18 @@ export default class DrumMachine {
   }
 
   togglePlay() {
-    this.playing = !this.playing;
-    console.log("playing: " + this.playing);
-    if(this.playing){
-      this.play();
+    // this.playing = !this.playing;
+    // console.log("playing: " + this.playing);
+    // if(this.playing){
+    //   this.play();
+    // }
+
+    if (this.playing) {
+      this.player.stop();
+      this.playing = false;
+    } else {
+      this.player.start();
+      this.playing = true;
     }
   }
 

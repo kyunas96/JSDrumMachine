@@ -1,7 +1,9 @@
 // UI functions must hook into the state of the drum machine
 import { keysForDrums } from "./config";
+import { populateSliders } from "./setup707";
 
 export default function setupUI(drumMachine) {
+  populateSliders();
   bindSoundsToCells(drumMachine);
   bindTransportControls(drumMachine);
   mapPlayToSpacebar(drumMachine);
