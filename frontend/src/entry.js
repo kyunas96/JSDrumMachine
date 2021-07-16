@@ -1,6 +1,7 @@
 import loadSamples from './808/loadSamples';
 import DrumMachine from './drumMachine';
 import { setup808Controller } from './808/setupController';
+import setupInstructions from './setupInstructions';
 
 document.addEventListener("DOMContentLoaded", () => {
   /* 
@@ -13,4 +14,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const drumMachine = new DrumMachine(loadSamples())
   window.drumMachine = drumMachine;
   setup808Controller(drumMachine);
+  setupInstructions();
 });

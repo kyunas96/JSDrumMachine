@@ -19,6 +19,24 @@
   </head>
   <body>
     <div id="container">
+      <div id="instructions-modal" class="hidden">
+        <div id="instructions-hide">
+          <img src="./public/assets/css/close.png" />
+        </div>
+        <div id="instructions-title">JS-808</div>
+        <div id="instructions-body">
+          <div id="instructions-header">
+          The JS-808 is an emulation of the
+          <a href="https://en.wikipedia.org/wiki/Roland_TR-808">Roland TR-808</a
+          >, drum machine that was first introduced in 1980 and has become a 
+          staple in the music industry with fans ranging from Tame Impala's 
+          Kevin Parker to Kanye West.
+          </div>
+          <ul>
+            <li>1. Select a sound</li>
+          </ul>
+        </div>
+      </div>
       <div id="drum-machine-header">
         <span> JavaScript Drum Machine </span>
       </div>
@@ -33,12 +51,12 @@
               </div>
               <div id="tempo-knob-container">
                 <input-knob
-                    id="tempo"
-                    value="-40"
-                    scale="100"
-                    min="-40"
-                    max="40"
-                  >
+                  id="tempo"
+                  value="-40"
+                  scale="100"
+                  min="-40"
+                  max="40"
+                >
                   <div class="mark">|</div>
                 </input-knob>
                 Speed
@@ -48,160 +66,160 @@
               <div id="knobs">
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>BD</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>BD</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>SD</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>SD</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>LT</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>LT</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>MT</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>MT</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>HT</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>HT</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>RS</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>RS</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>CP</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CP</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>CB</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CB</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>CY</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CY</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>OH</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>OH</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>CH</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>CH</div>
+                </div>
                 <div class="knob-container">
                   <div>Gain</div>
-                <input-knob
+                  <input-knob
                     class="gain"
                     value="-40"
                     scale="100"
                     min="-40"
                     max="40"
                   >
-                  <div class="mark">|</div>
-                </input-knob>
-                <div>Master</div>
-              </div>
+                    <div class="mark">|</div>
+                  </input-knob>
+                  <div>Master</div>
+                </div>
               </div>
               <div class="title-container">
                 <div class="title">Rhythm Composer</div>
@@ -342,6 +360,7 @@
         <a class="link" href="https://github.com/yunasty/JSProject/">
           <img src="./public/GitHub-Mark-64px.png" />
         </a>
+        <button id="instructions-reveal">Instructions</button>
         <a
           class="link"
           href="https://www.linkedin.com/in/kevin-yunas-987325183/"

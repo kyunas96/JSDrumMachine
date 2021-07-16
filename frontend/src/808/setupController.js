@@ -11,6 +11,7 @@ import drumNames from "./drumNames";
 import { throttle } from "underscore";
 import { Howler } from "howler";
 
+
 function setupKnob(drumMachine) {
   const knob = document.querySelector("input-knob#tempo");
   knob.value = -25.6;
@@ -81,10 +82,14 @@ function setupVolumeSliders(drumMachine) {
 }
 
 function bindTransportControls(drumMachine) {
-  let startStopButton = document.getElementById("start-stop-button");
+  const startStopButton = document.getElementById("start-stop-button");
   startStopButton.onclick = () => drumMachine.togglePlay();
-  let editButton = document.getElementById("edit-button-container");
-  editButton.onclick = () => drumMachine.toggleEdit();
+  const editButtonContainer = document.getElementById("edit-button-container");
+  const editButton = document.getElementById("edit-button");
+  editButtonContainer.onclick = () => {
+    drumMachine.toggleEdit();
+    editButton.classList.toggle("editing");
+  }
 }
 
 function setupTempoDisplay(drumMachine) {
