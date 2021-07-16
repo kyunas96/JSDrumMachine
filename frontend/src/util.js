@@ -17,7 +17,7 @@ function getNormalizedFromKnob(lowerBound, upperBound, input){
 }
 
 function getVolumeFromKnob(input){
-  return getNo(KNOB_MIN, KNOB_MAX, input);
+  return getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, input);
 }
 
 function lerpKnobInput(lowerBound, upperBound, normalizedInput){

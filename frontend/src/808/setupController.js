@@ -51,6 +51,7 @@ function createDrumSelect(drumName, id){
 
 function setupVolumeSliders(drumMachine) {
   const sliders = document.querySelectorAll("input-knob.gain");
+  console.log("sliders", sliders);
   for (let i = 0; i < sliders.length; i++) {
     const curSlider = sliders[i];
     curSlider.value = 40;
@@ -58,6 +59,7 @@ function setupVolumeSliders(drumMachine) {
     function setVolumeFromSlider() {
       const stringToNum = parseFloat(this.value);
       const volume = getVolumeFromKnob(stringToNum);
+      console.log("volume", volume);
       drumMachine.drums[i].volume(volume);
     }
 
