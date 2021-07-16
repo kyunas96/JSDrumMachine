@@ -116,6 +116,7 @@
   height: 25%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   /* justify-content: space-between; */
 }
 
@@ -126,13 +127,17 @@
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 40px;
   width: 75%;
+  height: 80%;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 #sample-display {
-  height: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 80%;
   width: 100px;
-  padding-left: 7px;
+  padding-left: 10px;
   text-align: center;
   font-family: 'Digi';
   color: #E4570F;
@@ -140,7 +145,7 @@
   border: none;
   font-size: 40px;
   cursor: pointer;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 option {
