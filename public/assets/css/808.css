@@ -356,3 +356,21 @@ option {
   font-size: 25px;
   color: #E4570F;
 }
+
+#instructions-reveal {
+  font-family: 'Serif-Gothic';
+  font-size: 40px;
+  color: #E4570F;
+}
+
+.instruction-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.instruction-entry img {
+  width: 70%;
+  height: auto;
+}
