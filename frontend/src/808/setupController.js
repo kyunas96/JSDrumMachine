@@ -20,7 +20,6 @@ function setupKnob(drumMachine) {
   knob.addEventListener("knob-move-end", () => {
     const stringToNum = parseFloat(knob.value);
     const normalized = getNormalizedFromKnob(KNOB_MIN, KNOB_MAX, stringToNum);
-    console.log(normalized);
     drumMachine.changeSpeed(getTempoFromKnob(stringToNum));
     const min = Math.max(0.10, normalized)
     tempoDisplay.value = (min * 10.0).toString().slice(0, 4);
@@ -29,7 +28,6 @@ function setupKnob(drumMachine) {
 
 function setupDrumSelector(drumMachine, drumNames){
   const sampleDisplay = document.getElementById("sample-display");
-  console.log(sampleDisplay);
   const options = [];
   drumNames.forEach((drumName, i) => {
     const ele = document.createElement("option");
@@ -51,7 +49,6 @@ function createDrumSelect(drumName, id){
 
 function setupVolumeSliders(drumMachine) {
   const sliders = document.querySelectorAll("input-knob.gain");
-  console.log("sliders", sliders);
   for (let i = 0; i < sliders.length; i++) {
     const curSlider = sliders[i];
     curSlider.value = 40;
@@ -59,7 +56,6 @@ function setupVolumeSliders(drumMachine) {
     function setVolumeFromSlider() {
       const stringToNum = parseFloat(this.value);
       const volume = getVolumeFromKnob(stringToNum);
-      console.log("volume", volume);
       drumMachine.drums[i].volume(volume);
     }
 
@@ -78,7 +74,6 @@ function setupVolumeSliders(drumMachine) {
 
     curSlider.addEventListener("knob-move-change", () => {
       sliderFunc();
-      console.log(drumMachine.drums);
     });
   }
 }
@@ -108,8 +103,6 @@ function setupTempoDisplay(drumMachine) {
 function bindSoundsToCells(drumMachine) {
   let drumCells = Array.from(document.getElementsByClassName("drum-cell"));
 
-  console.log("drumCells", drumCells);
-
   drumCells.forEach((drum, i) => {
     if (drum.id !== "") {
       drum.onclick = drumPlayAndToggle(drumMachine, drum);
@@ -133,7 +126,6 @@ function drumPlayAndToggle(drumMachine, drum) {
       // ex. If i click on the 5th step cell while in edit mode, the `currentSound`
       // should be toggled for the 5th stepContainer in the sequencer
       // drumMachine
-      // console.log("bang");
       drumMachine.toggleStep(drumNum);
     }
   };

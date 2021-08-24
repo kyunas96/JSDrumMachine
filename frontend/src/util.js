@@ -32,7 +32,6 @@ function getKnobValFromTempo(tempo){
 
 function getNormalizedFromTempo(lowerBound, upperBound, input){
   const totalRange = upperBound - lowerBound;
-  console.log("totalRange", totalRange)
   const adjuestedInput = input - lowerBound;
   return adjuestedInput / totalRange;
 }

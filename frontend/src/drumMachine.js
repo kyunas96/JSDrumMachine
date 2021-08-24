@@ -17,7 +17,6 @@ export default class DrumMachine {
     this.playSound = this.playSound.bind(this);
     this.currentStep = 0;
     this.player = new AdjustingInterval(this.playStep, this.speed);
-    console.log("dm", this);
   }
 
   changeSpeed(newSpeed){
@@ -33,7 +32,6 @@ export default class DrumMachine {
 
   setTempo(tempo) {
     if (checkTempoInput(tempo)) {
-      console.log();
       this.tempo = parseInt(tempo);
     } else {
       this.tempo = this.tempo;
@@ -43,20 +41,16 @@ export default class DrumMachine {
 
   toggleStep(stepNumber) {
     let curStep = this.sequencer[stepNumber];
-    console.log("curStep", curStep);
     curStep[this.currentSoundIndex] = !curStep[this.currentSoundIndex];
-    console.log(this.sequencer);
     this.toggleIndicators();
   }
 
   toggleIndicators() {
     let activeCells = this.grabActiveCells();
     let drumNodes = document.getElementsByClassName("drum-cell-button");
-    console.log("drumNodes", drumNodes)
     for (let i = 0; i < drumNodes.length; i++) {
       let curIndicator =
         drumNodes[i].getElementsByClassName("indicator")[0];
-        console.log(curIndicator);
       if (activeCells.includes(i)) {
         curIndicator.classList.add("armed");
       } else {
@@ -95,11 +89,8 @@ export default class DrumMachine {
 
   playStep() {
     const curStep = this.sequencer[this.checkStep()];
-    console.log("playing step: " + JSON.stringify(curStep));
-    console.log(this.drums);
     for (let i = 0; i < this.sequencer.length; i++) {
       if (curStep[i] === true) {
-        console.log(this.drums[i]);
         this.drums[i].play();
       }
     }
@@ -124,16 +115,9 @@ export default class DrumMachine {
     } else {
       this.clearIndicators();
     }
-    console.log("editing: " + this.editing);
   }
 
   togglePlay() {
-    // this.playing = !this.playing;
-    // console.log("playing: " + this.playing);
-    // if(this.playing){
-    //   this.play();
-    // }
-
     if (this.playing) {
       this.player.stop();
       this.playing = false;

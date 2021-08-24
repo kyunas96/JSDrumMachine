@@ -46,7 +46,6 @@ function drumPlayAndToggle(drumMachine, drum) {
       // ex. If i click on the 5th step cell while in edit mode, the `currentSound`
       // should be toggled for the 5th stepContainer in the sequencer
       // drumMachine
-      // console.log("bang");
       drumMachine.toggleStep(drumNum);
     }
   };
@@ -75,7 +74,6 @@ function mapSoundToCell(drumMachine, drum) {
       // ex. If i click on the 5th step cell while in edit mode, the `currentSound`
       // should be toggled for the 5th stepContainer in the sequencer
       // drumMachine
-      // console.log("bang");
       drumMachine.toggleStep(drumNum)
     }
   };
@@ -85,8 +83,6 @@ function mapToggleToCell(drumMachine, drumNum) {
   let currentStep = drumMachine.sequencer[drumNum];
   currentStep[drumMachine.currentSound] =
     !currentStep[drumMachine.currentSound];
-    
-  console.log(currentStep);
 }
 
 function mapSoundToKey(drumMachine, drumName, key) {
