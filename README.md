@@ -1,7 +1,7 @@
 [JS Drum Machine](http://javascript-drum-machine.herokuapp.com/)
 =================
 
-![Algorithm schema](./images/drumMachine.png)
+![](./images/drumMachine.png)
 
 JSDrumMachine is an interactive drum machine based on the Roland TR-808 originally released in 1980. All sounds are sourced from the original machine. 
 
@@ -11,8 +11,8 @@ JSDrumMachine is an interactive drum machine based on the Roland TR-808 original
 ### Technologies
   * JavaScript
   * [input-knob](https://www.npmjs.com/package/input-knob)
-  * Howler.js
-  * Node.js
-  * Express.js
-  * Webpack
+  * [Howler.js](https://howlerjs.com)
+  * [Node.js](https://nodejs.org/en/)
+  * [Express.js](https://www.npmjs.com/package/express)
+  * [Webpack](https://www.npmjs.com/package/webpack)
   
