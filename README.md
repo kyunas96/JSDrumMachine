@@ -3,7 +3,7 @@
 
 ![](./images/drumMachine.png)
 
-JSDrumMachine is an interactive drum machine based on the Roland TR-808 originally released in 1980. All sounds are sourced from the original machine. 
+JSDrumMachine is an interactive drum machine based on the [Roland TR-808](https://en.wikipedia.org/wiki/Roland_TR-808) originally released in 1980. All sounds are sourced from the original machine. 
 
 ## Table of Contents
   * [Technologies](#technologies)
