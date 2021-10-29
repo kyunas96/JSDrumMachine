@@ -30,3 +30,6 @@
  a hybrid approach can be used that sets up the general structure of the app 
  (such as the list of drums for the currentSample select element, or the cells
  of the sequencer)
+
+ Fix List:
+ 1. the dropdown menu should update when a drum is clicked to toggle
