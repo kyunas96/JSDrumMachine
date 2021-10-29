@@ -119,6 +119,7 @@ function drumPlayAndToggle(drumMachine, drum) {
     if (!drumMachine.editing) {
       drumMachine.setCurrentSound(drumNum);
       drumMachine.playSound(drumNum);
+      updateSampleDisplay(drumNum);
     } else {
       // in the case that the drumMachine is in edit mode, when drum cells are
       // clicked they should toggle the `currentSound` in the stepContainer
@@ -129,6 +130,11 @@ function drumPlayAndToggle(drumMachine, drum) {
       drumMachine.toggleStep(drumNum);
     }
   };
+}
+
+function updateSampleDisplay(updatedSampleNumber){
+  const sampleDisplayNode = document.getElementById("sample-display");
+  sampleDisplayNode.value = updatedSampleNumber;
 }
 
 function mapSoundToKey(drumMachine, drumNum, key) {
